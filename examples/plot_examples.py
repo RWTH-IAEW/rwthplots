@@ -15,8 +15,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import os
-if not os.path.exists("examples/figures"):
-    os.makedirs("examples/figures")
+if not os.path.exists("figures"):
+    os.makedirs("figures")
 
 def model(x, p):
     return x ** (2 * p + 1) / (1 + x ** (2 * p))
@@ -32,8 +32,8 @@ with plt.style.context(['rwth-custom']):
         ax.plot(x, model(x, p), label=p)
     ax.legend(title='Order')
     ax.set(**pparam)
-    fig.savefig('examples/figures/fig1.pdf')
-    fig.savefig('examples/figures/fig1.jpg', dpi=300)
+    fig.savefig('figures/fig1.pdf')
+    fig.savefig('figures/fig1.jpg', dpi=300)
 
 with plt.style.context(['rwth-latex']):
     fig, ax = plt.subplots()
@@ -44,8 +44,8 @@ with plt.style.context(['rwth-latex']):
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
     ax.set_ylabel(r'Current (A)')  
-    fig.savefig('examples/figures/fig2a.pdf')
-    fig.savefig('examples/figures/fig2a.jpg', dpi=300)
+    fig.savefig('figures/fig2a.pdf')
+    fig.savefig('figures/fig2a.jpg', dpi=300)
 
 with plt.style.context(['rwth-latex', 'grid']):
     fig, ax = plt.subplots()
@@ -56,8 +56,8 @@ with plt.style.context(['rwth-latex', 'grid']):
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
     ax.set_ylabel(r'Current (\textmu A)')  
-    fig.savefig('examples/figures/fig2b.pdf')
-    fig.savefig('examples/figures/fig2b.jpg', dpi=300)
+    fig.savefig('figures/fig2b.pdf')
+    fig.savefig('figures/fig2b.jpg', dpi=300)
 
 with plt.style.context(['rwth-latex', 'blue']):
     fig, ax = plt.subplots()
@@ -68,8 +68,8 @@ with plt.style.context(['rwth-latex', 'blue']):
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
     ax.set_ylabel(r'Current (\textmu A)')  
-    fig.savefig('examples/figures/fig2c.pdf')
-    fig.savefig('examples/figures/fig2c.jpg', dpi=300)
+    fig.savefig('figures/fig2c.pdf')
+    fig.savefig('figures/fig2c.jpg', dpi=300)
 
 with plt.style.context(['rwth-latex', 'red']):
     fig, ax = plt.subplots()
@@ -80,8 +80,8 @@ with plt.style.context(['rwth-latex', 'red']):
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
     ax.set_ylabel(r'Current (\textmu A)')  
-    fig.savefig('examples/figures/fig2d.pdf')
-    fig.savefig('examples/figures/fig2d.jpg', dpi=300)
+    fig.savefig('figures/fig2d.pdf')
+    fig.savefig('figures/fig2d.jpg', dpi=300)
 
 with plt.style.context(['rwth-latex', 'extended']):
     fig, ax = plt.subplots()
@@ -92,8 +92,8 @@ with plt.style.context(['rwth-latex', 'extended']):
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
     ax.set_ylabel(r'Current (\textmu A)')  
-    fig.savefig('examples/figures/fig2e.pdf')
-    fig.savefig('examples/figures/fig2e.jpg', dpi=300)
+    fig.savefig('figures/fig2e.pdf')
+    fig.savefig('figures/fig2e.jpg', dpi=300)
 
 
 with plt.style.context(['rwth-word', 'extended']):
@@ -105,5 +105,5 @@ with plt.style.context(['rwth-word', 'extended']):
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
     ax.set_ylabel(r'Current (A)')  
-    fig.savefig('examples/figures/fig3.pdf')
-    fig.savefig('examples/figures/fig3.jpg', dpi=300)
+    fig.savefig('figures/fig3.pdf')
+    fig.savefig('figures/fig3.jpg', dpi=300)
