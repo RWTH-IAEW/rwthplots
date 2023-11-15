@@ -9,7 +9,7 @@ These are the corporate design colors at RWTH Aachen University.
 ### Installation
 
 # Installation via
-* navigate to folder
+* (basic) clone folder and navigate to the repository then
   ```sh
   pip install -e .
   
@@ -22,6 +22,18 @@ These are the corporate design colors at RWTH Aachen University.
   ```
 *
 
+* (advanced) alternatively using a ssh-key
+  ```sh
+  pip install git+ssh://git@gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+  
+  # to check succesful installation
+  import matplotlib.pyplot as plt
+  plt.style.available
+  # for simple usage
+  import matplotlib.pyplot as plt
+  plt.style.use('rwth-latex')
+  ```
+*
 
 
 <!-- USAGE EXAMPLES -->
