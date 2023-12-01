@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=62", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[project]
+name = "RWTHPlots"
+authors = [
+    { name = "Steffen Kortmann", email = "s.kortmann@iaew.rwth-aachen.de" },
+]
+description = "Adding standard themes with RWTH Aachen University colous to matplotlib"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = [
+    "matplotlib-style-sheets",
+    "matplotlib-figures",
+    "scientific-papers",
+    "thesis-template",
+    "matplotlib-styles",
+    "python"
+]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "matplotlib",
+]
+dynamic = ["version"]
+
+[project.scripts]
+rwthplots = "install_styles:installation"

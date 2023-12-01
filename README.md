@@ -10,30 +10,36 @@ These are the corporate design colors at RWTH Aachen University.
 
 # Installation via
 * (basic) clone folder and navigate to the repository then
-  ```sh
-  pip install -e .
+  * open terminal
+    ```sh
+    pip install -e .
+    ```
+  * open python console
+    ```python3
+    # to check successful installation
+    import matplotlib.pyplot as plt
+    plt.style.available
   
-  # to check succesful installation
-  import matplotlib.pyplot as plt
-  plt.style.available
-  # for simple usage
-  import matplotlib.pyplot as plt
-  plt.style.use('rwth-latex')
-  ```
-*
+    # for simple usage
+    import matplotlib.pyplot as plt
+    plt.style.use('rwth-latex')
+    ```
 
 * (advanced) alternatively using a ssh-key
-  ```sh
-  pip install git+ssh://git@gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-  
-  # to check succesful installation
-  import matplotlib.pyplot as plt
-  plt.style.available
-  # for simple usage
-  import matplotlib.pyplot as plt
-  plt.style.use('rwth-latex')
-  ```
-*
+  * open terminal
+    ```sh
+    pip install git+ssh://git@gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+    ``` 
+  * open python console
+    ```python
+    # to check succesful installation
+    import matplotlib.pyplot as plt
+    plt.style.available
+
+    # for simple usage
+    import matplotlib.pyplot as plt
+    plt.style.use('rwth-latex')
+    ```
 
 
 <!-- USAGE EXAMPLES -->
@@ -43,10 +49,10 @@ These are the corporate design colors at RWTH Aachen University.
 
 This is an example of how to list things you need to use the software and how to install them.
 * in python script with plotting
-  ```sh
+  ```python
   import cmap_rwth_colours
-  plt.cm.register_cmap(‘extended_RWTH_discrete’, rwth_cmap(‘extended_RWTH_discrete’))
-  plt.set_cmap(‘extended_RWTH_discrete’)
+  plt.cm.register_cmap('extended_RWTH_discrete', rwth_cmap('extended_RWTH_discrete'))
+  plt.set_cmap('extended_RWTH_discrete')
   ```
 * then set cmap for each python plot created with matplotlib to 'extended_RWTH_discrete'
 
