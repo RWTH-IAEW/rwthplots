@@ -34,8 +34,7 @@ import os
 import shutil
 
 from setuptools import setup
-from setuptools.command.develop import develop
-from setuptools.command.install import install
+from distutils.command.install import install
 
 
 def install_styles():
@@ -69,14 +68,6 @@ class PostInstallMoveFile(install):
         atexit.register(install_styles)
 
 
-class PostInstallDevMoveFile(develop):
-    """Post-installation in develop (editable) mode class to run the installation script"""
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        atexit.register(install_styles)
-
-
 # Get description from README
 root = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
@@ -101,6 +92,5 @@ setup(
     ],
     url="https://github.com/skortmann/RWTHPlots",
     install_requires=['matplotlib', ],
-    cmdclass={'install': PostInstallMoveFile,
-              'develop': PostInstallDevMoveFile},
+    cmdclass={'install': PostInstallMoveFile, }
 )
