@@ -1,0 +1,28 @@
+stages:
+  - testing
+
+# ************************ testing ************************
+pytest:
+  stage: testing
+  tags:
+    - docker
+  image: python:${PY_VERSION}
+  except:
+    - dev
+  script:
+    - pip install .
+    - pip install -qq pytest pytest-cov
+    # Jump into test directory to have test files available
+    - cd test
+    - pytest --junitxml=pytest_$PY_VERSION.xml --cov
+  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
+  needs: []
+  artifacts:
+    when: always
+    reports:
+      junit: test/pytest_$PY_VERSION.xml
+    paths:
+      - test/pytest_$PY_VERSION.xml
+  parallel:
+    matrix:
+      - PY_VERSION: ["3.9", "3.10", "3.11"]
