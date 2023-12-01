@@ -67,6 +67,30 @@ class PostInstallMoveFile(install):
         atexit.register(install_styles)
 
 
+# Get description from README
+root = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
+    name='RWTHPlots',
+    version='1.0.0',
+    author="Steffen Kortmann",
+    author_email="steffen.kortmann@rwth-aachen.de",
+    description="Adding standard themes with RWTH Aachen University colous to matplotlib",
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    license="MIT",
+    keywords=[
+        "matplotlib-style-sheets",
+        "matplotlib-figures",
+        "scientific-papers",
+        "thesis-template",
+        "matplotlib-styles",
+        "python"
+    ],
+    url="https://github.com/skortmann/RWTHPlots",
+    install_requires=['matplotlib', ],
     cmdclass={'install': PostInstallMoveFile, },
 )
+
