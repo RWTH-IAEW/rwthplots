@@ -63,8 +63,8 @@ def install_styles():
 class PostInstallMoveFile(_build_py):
     """Post-installation class to run the installation script"""
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def run(self):
+        super().run()
         atexit.register(install_styles)
 
 
