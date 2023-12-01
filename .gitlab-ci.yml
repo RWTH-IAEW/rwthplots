@@ -16,8 +16,6 @@ pytest:
   tags:
     - docker
   image: python:${PY_VERSION}
-  except:
-    - dev
   before_script:
     - *install
   script:
