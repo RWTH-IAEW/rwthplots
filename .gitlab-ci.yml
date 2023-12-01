@@ -1,6 +1,15 @@
 stages:
   - testing
 
+.install_dependencies: &install
+  - python --version
+  - echo -e "\e[0Ksection_start:`date +%s`:dependencies[collapsed=true]\r\e[0KInstalling Python dependencies..."
+  - python -m venv venv
+  - source venv/bin/activate
+  - pip install -e .
+  - pip install -qq pytest pytest-cov
+  - echo -e "\e[0Ksection_end:`date +%s`:dependencies\r\e[0K"
+
 # ************************ testing ************************
 pytest:
   stage: testing
@@ -9,14 +18,13 @@ pytest:
   image: python:${PY_VERSION}
   except:
     - dev
+  before_script:
+    - *install
   script:
-    - pip install .
-    - pip install -qq pytest pytest-cov
-    # Jump into test directory to have test files available
     - cd test
     - pytest --junitxml=pytest_$PY_VERSION.xml --cov
   coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
-  needs: []
+  needs: [ ]
   artifacts:
     when: always
     reports:
@@ -25,4 +33,4 @@ pytest:
       - test/pytest_$PY_VERSION.xml
   parallel:
     matrix:
-      - PY_VERSION: ["3.9", "3.10", "3.11"]
+      - PY_VERSION: [ "3.9", "3.10", "3.11" ]
