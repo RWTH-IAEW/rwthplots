@@ -10,13 +10,14 @@ Institut für Elektrische Anlagen und Netze, Digitalisierung und Energiewirtscha
 (c) 2022, Steffen Kortmann
 """
 
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 
 import os
+
 if not os.path.exists("figures"):
     os.makedirs("figures")
+
 
 def model(x, p):
     return x ** (2 * p + 1) / (1 + x ** (2 * p))
@@ -43,7 +44,7 @@ with plt.style.context(['rwth-latex']):
     ax.autoscale(tight=True)
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
-    ax.set_ylabel(r'Current (A)')  
+    ax.set_ylabel(r'Current (A)')
     fig.savefig('figures/fig2a.pdf')
     fig.savefig('figures/fig2a.jpg', dpi=300)
 
@@ -55,7 +56,7 @@ with plt.style.context(['rwth-latex', 'grid']):
     ax.autoscale(tight=True)
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
-    ax.set_ylabel(r'Current (\textmu A)')  
+    ax.set_ylabel(r'Current (\textmu A)')
     fig.savefig('figures/fig2b.pdf')
     fig.savefig('figures/fig2b.jpg', dpi=300)
 
@@ -67,7 +68,7 @@ with plt.style.context(['rwth-latex', 'blue']):
     ax.autoscale(tight=True)
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
-    ax.set_ylabel(r'Current (\textmu A)')  
+    ax.set_ylabel(r'Current (\textmu A)')
     fig.savefig('figures/fig2c.pdf')
     fig.savefig('figures/fig2c.jpg', dpi=300)
 
@@ -79,7 +80,7 @@ with plt.style.context(['rwth-latex', 'red']):
     ax.autoscale(tight=True)
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
-    ax.set_ylabel(r'Current (\textmu A)')  
+    ax.set_ylabel(r'Current (\textmu A)')
     fig.savefig('figures/fig2d.pdf')
     fig.savefig('figures/fig2d.jpg', dpi=300)
 
@@ -91,10 +92,9 @@ with plt.style.context(['rwth-latex', 'extended']):
     ax.autoscale(tight=True)
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
-    ax.set_ylabel(r'Current (\textmu A)')  
+    ax.set_ylabel(r'Current (\textmu A)')
     fig.savefig('figures/fig2e.pdf')
     fig.savefig('figures/fig2e.jpg', dpi=300)
-
 
 with plt.style.context(['rwth-word', 'extended']):
     fig, ax = plt.subplots()
@@ -104,6 +104,6 @@ with plt.style.context(['rwth-word', 'extended']):
     ax.autoscale(tight=True)
     ax.set(**pparam)
     # Note: $\mu$ doesn't work with Times font (used by ieee style)
-    ax.set_ylabel(r'Current (A)')  
+    ax.set_ylabel(r'Current (A)')
     fig.savefig('figures/fig3.pdf')
     fig.savefig('figures/fig3.jpg', dpi=300)

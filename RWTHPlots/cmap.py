@@ -6,7 +6,7 @@ Definition of RWTH colour schemes for lines and maps.
 
 # Change default colorset (for lines) and colormap (for maps).
 plt.rc('axes', prop_cycle=plt.cycler('color', list(rwth_cset('rwth_100'))))
-plt.cm.register_cmap('standard_RWTH_discrete', rwth_cmap('standard_RWTH_discrete'))
+matplotlib.colormaps.register((rwth_cmap('standard_RWTH_discrete'))
 plt.rc('image', cmap='standard_RWTH_discrete')
 
 all credits go out to Paul Tol //personal.sron.nl/~pault/
@@ -16,7 +16,6 @@ Institut für Elektrische Anlagen und Netze, Digitalisierung und Energiewirtscha
 """
 
 import copy
-from operator import index
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap, to_rgba_array
 

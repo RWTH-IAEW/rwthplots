@@ -44,7 +44,7 @@ def install_styles():
     import matplotlib
 
     # Find all style files
-    style_files = glob.glob('styles/**/*.mplstyle', recursive=True)
+    style_files = glob.glob('RWTHPlots/styles/**/*.mplstyle', recursive=True)
 
     # Find stylelib directory (where the *.mplstyle files go)
     print("Your style sheets are located at: {}".format(
@@ -92,5 +92,6 @@ setup(
     ],
     url="https://github.com/skortmann/RWTHPlots",
     install_requires=['matplotlib', ],
+    packages=['RWTHPlots'],
     cmdclass={'install': PostInstallMoveFile, }
 )
