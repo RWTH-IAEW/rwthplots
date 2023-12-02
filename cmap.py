@@ -20,6 +20,7 @@ from operator import index
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap, to_rgba_array
 
+
 def discretemap(colormap, hexclrs):
     """
     Produce a colormap from a list of discrete colors without interpolation.
@@ -27,8 +28,9 @@ def discretemap(colormap, hexclrs):
     clrs = to_rgba_array(hexclrs)
     clrs = np.vstack([clrs[0], clrs, clrs[-1]])
     cdict = {}
-    for ki, key in enumerate(('red','green','blue')):
-        cdict[key] = [ (i/(len(clrs)-2.), clrs[i, ki], clrs[i+1, ki]) for i in range(len(clrs)-1) ]
+    for ki, key in enumerate(('red', 'green', 'blue')):
+        cdict[key] = [(i / (len(clrs) - 2.), clrs[i, ki], clrs[i + 1, ki]) for i in
+                      range(len(clrs) - 1)]
     return LinearSegmentedColormap(colormap, cdict)
 
 
@@ -36,13 +38,14 @@ class RWTHcmaps(object):
     """
     Class RWTHcmaps definition.
     """
+
     def __init__(self):
         """
         """
         self.cmap = None
         self.cname = None
         self.namelist = (
-            'standard_RWTH_discrete', 'standard_RWTH', 
+            'standard_RWTH_discrete', 'standard_RWTH',
             'blue_RWTH_discrete', 'blue_RWTH',
             'black_RWTH_discrete', 'black_RWTH',
             'magenta_RWTH_discrete', 'magenta_RWTH',
@@ -63,21 +66,21 @@ class RWTHcmaps(object):
         self.funcdict = dict(
             zip(self.namelist,
                 (self.standard_RWTH_discrete, self.standard_RWTH,
-                self.blue_RWTH_discrete, self.blue_RWTH,
-                self.black_RWTH_discrete, self.black_RWTH,
-                self.magenta_RWTH_discrete, self.magenta_RWTH,
-                self.yellow_RWTH_discrete, self.yellow_RWTH,
-                self.petrol_RWTH_discrete, self.petrol_RWTH,
-                self.turquoise_RWTH_discrete, self.turquoise_RWTH,
-                self.green_RWTH_discrete, self.green_RWTH,
-                self.maygreen_RWTH_discrete, self.maygreen_RWTH,
-                self.orange_RWTH_discrete, self.orange_RWTH,
-                self.red_RWTH_discrete, self.red_RWTH,
-                self.bordeaux_RWTH_discrete, self.bordeaux_RWTH,
-                self.violet_RWTH_discrete, self.violet_RWTH,
-                self.purple_RWTH_discrete, self.purple_RWTH,
-                self.continuous_RWTH_discrete, self.rolling_RWTH_discrete,
-                self.extended_RWTH_discrete)))
+                 self.blue_RWTH_discrete, self.blue_RWTH,
+                 self.black_RWTH_discrete, self.black_RWTH,
+                 self.magenta_RWTH_discrete, self.magenta_RWTH,
+                 self.yellow_RWTH_discrete, self.yellow_RWTH,
+                 self.petrol_RWTH_discrete, self.petrol_RWTH,
+                 self.turquoise_RWTH_discrete, self.turquoise_RWTH,
+                 self.green_RWTH_discrete, self.green_RWTH,
+                 self.maygreen_RWTH_discrete, self.maygreen_RWTH,
+                 self.orange_RWTH_discrete, self.orange_RWTH,
+                 self.red_RWTH_discrete, self.red_RWTH,
+                 self.bordeaux_RWTH_discrete, self.bordeaux_RWTH,
+                 self.violet_RWTH_discrete, self.violet_RWTH,
+                 self.purple_RWTH_discrete, self.purple_RWTH,
+                 self.continuous_RWTH_discrete, self.rolling_RWTH_discrete,
+                 self.extended_RWTH_discrete)))
 
     def standard_RWTH_discrete(self):
         """
@@ -329,14 +332,14 @@ class RWTHcmaps(object):
                 ]
         indexes = []
         for i in range(5):
-            indexes.append([i*13 for i in range(i+1)])
+            indexes.append([i * 13 for i in range(i + 1)])
         for j in range(12):
             for i in range(5):
                 indexes.append(copy.deepcopy(indexes[-1]))
-                indexes[-1].append(i*13+(j+1))
-        if lut == None or lut < 1 or lut > (13*5):
+                indexes[-1].append(i * 13 + (j + 1))
+        if lut == None or lut < 1 or lut > (13 * 5):
             lut = 23
-        self.cmap = discretemap(self.cname, [ clrs[i] for i in indexes[lut-1] ])
+        self.cmap = discretemap(self.cname, [clrs[i] for i in indexes[lut - 1]])
         if lut == 23:
             self.cmap.set_bad('#777777')
         else:
@@ -387,14 +390,14 @@ class RWTHcmaps(object):
                 ]
         indexes = []
         for i in range(13):
-            indexes.append([i for i in range(i+1)])
+            indexes.append([i for i in range(i + 1)])
         for j in range(4):
             for i in range(13):
                 indexes.append(copy.deepcopy(indexes[-1]))
-                indexes[-1].insert((i*2+1+j),(j*13+i+13))
-        if lut == None or lut < 1 or lut > (13*5):
+                indexes[-1].insert((i * 2 + 1 + j), (j * 13 + i + 13))
+        if lut == None or lut < 1 or lut > (13 * 5):
             lut = 23
-        self.cmap = discretemap(self.cname, [ clrs[i] for i in indexes[lut-1] ])
+        self.cmap = discretemap(self.cname, [clrs[i] for i in indexes[lut - 1]])
         if lut == 23:
             self.cmap.set_bad('#777777')
         else:
@@ -447,7 +450,7 @@ def rwth_cset(colorset=None):
       - list(cset) gives a list with all colors
     """
     from collections import namedtuple
-    
+
     namelist = ('rwth_100', 'rwth_75', 'rwth_50', 'rwth_25', 'rwth_10')
     if colorset == None:
         return namelist
@@ -455,46 +458,45 @@ def rwth_cset(colorset=None):
         colorset = 'rwth_100'
         print('*** Warning: requested colorset not defined,',
               'known colorsets are {}.'.format(namelist),
-              'Using {}.'.format(colorset)) 
+              'Using {}.'.format(colorset))
 
     if colorset == 'rwth_100':
         cset = namedtuple('Bcset',
-                    'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
+                          'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
         return cset('#00549F', '#000000', '#E30066', '#FFED00', '#006165',
                     '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E',
                     '#A11035', '#612158', '#7A6FAC')
 
     if colorset == 'rwth_75':
         cset = namedtuple('Hcset',
-                    'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
+                          'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
         return cset('#407FB7', '#646567', '#E96088', '#FFF055', '#2D7F83',
                     '#00B1B7', '#8DC060', '#D0D95C', '#FABE50', '#D85C41',
                     '#B65256', '#834E75', '#9B91C1')
 
     if colorset == 'rwth_50':
         cset = namedtuple('Vcset',
-                    'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
+                          'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
         return cset('#8EBAE5', '#9C9E9F', '#F19EB1', '#FFF59B', '#7DA4A7',
                     '#89CCCF', '#B8D698', '#E0E69A', '#FDD48F', '#E69679',
                     '#CD8B87', '#A8859E', '#BCB5D7')
 
     if colorset == 'rwth_25':
         cset = namedtuple('Mcset',
-                    'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
+                          'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
         return cset('#C7DDF2', '#CFD1D2', '#F9D2DA', '#FFFAD1', '#BFD0D1',
                     '#CAE7E7', '#DDEBCE', '#F0F3D0', '#FEEAC9', '#F3CDBB',
                     '#E5C5C0', '#D2C0CD', '#DEDAEB')
 
     if colorset == 'rwth_10':
         cset = namedtuple('Mcset',
-                    'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
+                          'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
         return cset('#E8F1FA', '#ECEDED', '#FDEEF0', '#FFFDEE', '#E6ECEC',
                     '#EBF6F6', '#F2F7EC', '#F9FAED', '#FFF7EA', '#FAEBE3',
                     '#F5E8E5', '#EDE5EA', '#F2F0F7')
 
 
 def main():
-
     from matplotlib import pyplot as plt
 
     # Show colorsets rwth_cset(<scheme>).
@@ -522,31 +524,33 @@ def main():
         pos = list(ax.get_position().bounds)
         ax.set_axis_off()
         ax.imshow(gradient, aspect=4, cmap=rwth_cmap(scheme))
-        fig.text(pos[0] - 0.01, pos[1] + pos[3]/2., scheme, va='center', ha='right', fontsize=10)
+        fig.text(pos[0] - 0.01, pos[1] + pos[3] / 2., scheme, va='center', ha='right', fontsize=10)
     plt.show()
 
     # Show colormaps rwth_cmap('continous_RWTH_discrete', <lut>). 
     gradient = np.linspace(0, 1, 256)
     gradient = np.vstack((gradient, gradient))
-    fig, axes = plt.subplots(nrows=13*5)
+    fig, axes = plt.subplots(nrows=13 * 5)
     fig.subplots_adjust(top=0.98, bottom=0.02, left=0.25, right=0.99)
     for lut, ax in enumerate(axes, start=1):
         pos = list(ax.get_position().bounds)
         ax.set_axis_off()
         ax.imshow(gradient, aspect=4, cmap=rwth_cmap('continuous_RWTH_discrete', lut))
-        fig.text(pos[0] - 0.01, pos[1] + pos[3]/2., 'continuous_RWTH_discrete, ' + str(lut), va='center', ha='right', fontsize=8)
+        fig.text(pos[0] - 0.01, pos[1] + pos[3] / 2., 'continuous_RWTH_discrete, ' + str(lut),
+                 va='center', ha='right', fontsize=8)
     plt.show()
 
     # Show colormaps rwth_cmap('extended_RWTH_discrete', <lut>). 
     gradient = np.linspace(0, 1, 256)
     gradient = np.vstack((gradient, gradient))
-    fig, axes = plt.subplots(nrows=13*5)
+    fig, axes = plt.subplots(nrows=13 * 5)
     fig.subplots_adjust(top=0.98, bottom=0.02, left=0.25, right=0.99)
     for lut, ax in enumerate(axes, start=1):
         pos = list(ax.get_position().bounds)
         ax.set_axis_off()
         ax.imshow(gradient, aspect=4, cmap=rwth_cmap('extended_RWTH_discrete', lut))
-        fig.text(pos[0] - 0.01, pos[1] + pos[3]/2., 'extended_RWTH_discrete, ' + str(lut), va='center', ha='right', fontsize=8)
+        fig.text(pos[0] - 0.01, pos[1] + pos[3] / 2., 'extended_RWTH_discrete, ' + str(lut),
+                 va='center', ha='right', fontsize=8)
     plt.show()
 
 

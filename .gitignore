@@ -1,3 +1,7 @@
 styles/template.mplstyle
 
-/.idea
+.idea
+*.xml
+*.egg-info
+build
+venv
