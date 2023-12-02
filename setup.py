@@ -33,8 +33,8 @@ import glob
 import os
 import shutil
 
-from distutils.command.build_py import build_py as _build_py
-from distutils.core import setup
+from setuptools import setup
+from setuptools.command.install import install
 
 
 def install_styles():
@@ -60,11 +60,11 @@ def install_styles():
         shutil.copy(style_file, os.path.join(mpl_style_lib_dir, os.path.basename(style_file)))
 
 
-class PostInstallMoveFile(_build_py):
+class PostInstallMoveFile(install):
     """Post-installation class to run the installation script"""
 
-    def run(self):
-        super().run()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         atexit.register(install_styles)
 
 
