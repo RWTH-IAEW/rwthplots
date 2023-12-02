@@ -8,10 +8,15 @@ These are the corporate design colors at RWTH Aachen University.
 
 ### Installation
 
+| ⚠️ Warning                                                            | 
+|-----------------------------------------------------------------------|
+| You need to use pip <=23.0.1, otherwise post-installation hook fails! |
+
 # Installation via
 * (basic) clone folder and navigate to the repository then
   * open terminal
     ```sh
+    pip install --upgrade pip==23.0.1
     pip install -e .
     ```
   * open python console
