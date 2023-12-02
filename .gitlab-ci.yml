@@ -21,7 +21,7 @@ pytest:
     - *install
   script:
     - cd test
-    - pytest --junitxml=pytest_$PY_VERSION.xml --cov
+    - python -m pytest --junitxml=pytest_$PY_VERSION.xml --cov=RWTHPlots
   coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
   needs: [ ]
   artifacts:

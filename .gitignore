@@ -5,3 +5,4 @@ RWTHPlots/styles/template.mplstyle
 *.egg-info
 build
 venv
+.coverage
