@@ -1,7 +1,8 @@
-styles/template.mplstyle
+RWTHPlots/styles/template.mplstyle
 
 .idea
 *.xml
 *.egg-info
 build
 venv
+.coverage

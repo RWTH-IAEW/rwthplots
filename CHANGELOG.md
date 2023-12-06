@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0
+### Added or Changed
+- Create [flat package layout](https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#flat-layout)
+- Add tests for cmap function
+- Change example in README.md to latest version
+
 ## v1.1.0
 ### Added or Changed
 - Add CI for testing with python version 3.9, 3.10 and 3.11

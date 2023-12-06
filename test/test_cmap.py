@@ -1,0 +1,19 @@
+import matplotlib
+import matplotlib.pyplot as plt
+from RWTHPlots.cmap import rwth_cmap
+
+import pytest
+
+
+@pytest.mark.parametrize("color_map_name", ['extended_RWTH_discrete',
+                                            'blue_RWTH_discrete',
+                                            'black_RWTH_discrete',
+                                            'rolling_RWTH_discrete',
+                                            'green_RWTH_discrete'])
+def test_cmap_rwth_cmap(color_map_name):
+    """Test to initialize the rwth_cmap"""
+
+    matplotlib.colormaps.register(rwth_cmap(color_map_name))
+    plt.set_cmap(color_map_name)
+
+    assert color_map_name == plt.get_cmap().name

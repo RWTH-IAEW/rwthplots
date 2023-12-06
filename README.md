@@ -55,9 +55,11 @@ These are the corporate design colors at RWTH Aachen University.
 This is an example of how to list things you need to use the software and how to install them.
 * in python script with plotting
   ```python
-  import cmap_rwth_colours
-  plt.cm.register_cmap('extended_RWTH_discrete', rwth_cmap('extended_RWTH_discrete'))
+  from RWTHPlots.cmap import rwth_cmap
+  
+  matplotlib.colormaps.register(rwth_cmap('extended_RWTH_discrete'))
   plt.set_cmap('extended_RWTH_discrete')
+  
   ```
 * then set cmap for each python plot created with matplotlib to 'extended_RWTH_discrete'
 

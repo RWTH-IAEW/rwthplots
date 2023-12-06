@@ -44,7 +44,7 @@ def install_styles():
     import matplotlib
 
     # Find all style files
-    style_files = glob.glob('styles/**/*.mplstyle', recursive=True)
+    style_files = glob.glob('RWTHPlots/styles/**/*.mplstyle', recursive=True)
 
     # Find stylelib directory (where the *.mplstyle files go)
     print("Your style sheets are located at: {}".format(
@@ -75,7 +75,7 @@ with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='RWTHPlots',
-    version='1.1.0',
+    version='2.0.0',
     author="Steffen Kortmann",
     author_email="steffen.kortmann@rwth-aachen.de",
     description="Adding standard themes with RWTH Aachen University colours to matplotlib",
@@ -92,5 +92,6 @@ setup(
     ],
     url="https://github.com/skortmann/RWTHPlots",
     install_requires=['matplotlib', ],
+    packages=['RWTHPlots'],
     cmdclass={'install': PostInstallMoveFile, }
 )
