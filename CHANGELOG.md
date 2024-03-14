@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.0
+### Added or Changed
+- Added rwth-latex-beamer.mplstyle
+- Moved examples folder to root directory so it won't be installed with pip
+- Updated README.md with new example and added information about the new mplstyle file
+
 ## v2.0.0
 ### Added or Changed
 - Create [flat package layout](https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#flat-layout)

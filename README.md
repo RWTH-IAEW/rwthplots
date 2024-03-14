@@ -49,6 +49,8 @@ plt.style.use('rwth-latex')
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+There are known issues that LaTeX cannot be displayed via PyCharm, but it works by using the 'rwth-word' style first and inspect the figure and if it is ready for export, ``plt.savefig()`` works easily.
+
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.

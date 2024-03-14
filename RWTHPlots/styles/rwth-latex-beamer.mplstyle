@@ -36,15 +36,21 @@ lines.linewidth : 1.
 legend.frameon : True
 legend.fontsize: 12
 
-# Always save as 'tight'
-savefig.bbox : tight
-savefig.pad_inches : 0.05
-
-# Use serif fonts
+# Set font sizes
 font.size: 16
 axes.labelsize: 16
 axes.titlesize: 16
 figure.titlesize: 20
 
+# Always save as 'tight'
+savefig.bbox : tight
+savefig.pad_inches : 0.05
+
+# Use serif fonts
+# font.serif : Times
+font.family : serif
+mathtext.fontset : dejavuserif
+
 # Use LaTeX for math formatting
 text.usetex : True
+text.latex.preamble : \usepackage{amsmath} \usepackage{amssymb}
