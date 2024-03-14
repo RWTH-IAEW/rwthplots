@@ -1,0 +1,70 @@
+#### Matplotlib style for LaTeX Beamer with fira font ####
+# This style file is designed to create plots that integrate nicely
+# with the Metropolis Beamer template and the Fira font family.
+
+#### Figure Settings ####
+figure.figsize : 12.703545316175454, 7.851222783020961  # Default figure size
+figure.dpi : 1200  # Dots per inch
+figure.facecolor: none  # Background color
+
+#### Axes Settings ####
+axes.axisbelow: True  # Draw gridlines and ticks below patches (e.g., bars, lines)
+axes.facecolor: none  # Axes background color
+axes.linewidth : 0.5  # Edge line width
+axes.prop_cycle : cycler('color', ['00549F', '000000', 'E30066', 'FFED00', '006165', '0098A1', '57AB27', 'BDCD00', 'F6A800', 'CC071E', 'A11035', '612158', '7A6FAC'])  # Color cycle
+axes.labelsize: 16  # Font size for the x and y labels
+axes.titlesize: 16  # Font size for the title
+
+#### Line Settings ####
+lines.antialiased: True  # Antialiasing on lines
+lines.markeredgewidth: 0  # Marker edge width
+lines.markersize: 7  # Marker size
+lines.solid_capstyle: round  # Cap style
+lines.linewidth : 1.  # Line width
+
+#### Grid Settings ####
+grid.linestyle: -  # Grid line style, "-" for solid lines
+grid.linewidth : 0.5  # Grid line width
+axes.grid: True  # Enable grid by default
+
+#### Legend Settings ####
+legend.frameon : True  # Legend box background
+legend.facecolor: white  # Legend background color
+legend.numpoints: 1  # Number of marker points in the legend
+legend.scatterpoints: 1  # Number of scatter points
+legend.fontsize: 12  # Font size
+
+#### Font Settings ####
+font.size: 16  # General font size
+font.family: sans-serif  # Font family
+
+#### Savefig Settings ####
+savefig.bbox : tight  # Tight bounding box
+savefig.facecolor: none  # Background color
+savefig.format: pdf  # Save format
+savefig.pad_inches : 0.05  # Padding
+
+#### Text Settings ####
+text.usetex : True  # Use LaTeX for all text handling
+text.latex.preamble : \usepackage[T1]{fontenc} \usepackage[sfdefault]{FiraSans} \usepackage{sfmath} \usepackage{amsmath} \usepackage{amssymb}  # LaTeX preamble
+
+#### Tick Settings (X and Y) ####
+xtick.direction : in  # Direction
+xtick.major.pad: 10  # Padding
+xtick.major.size : 3  # Size of major tick
+xtick.major.width : 0.5  # Width of major tick
+xtick.minor.size : 1.5  # Size of minor tick
+xtick.minor.width : 0.5  # Width of minor tick
+xtick.minor.visible : True  # Visibility of minor tick
+xtick.top : True  # Draw ticks on the top side
+xtick.labelsize: 12  # Font size
+
+ytick.direction : in  # Direction
+ytick.major.pad: 10  # Padding
+ytick.major.size : 3  # Size of major tick
+ytick.major.width : 0.5  # Width of major tick
+ytick.minor.size : 1.5  # Size of minor tick
+ytick.minor.width : 0.5  # Width of minor tick
+ytick.minor.visible : True  # Visibility of minor tick
+ytick.right : True  # Draw ticks on the right side
+ytick.labelsize: 12  # Font size

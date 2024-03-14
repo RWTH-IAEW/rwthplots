@@ -107,3 +107,15 @@ with plt.style.context(['rwth-word', 'extended']):
     ax.set_ylabel(r'Current (A)')
     fig.savefig('figures/fig3.pdf')
     fig.savefig('figures/fig3.jpg', dpi=300)
+
+with plt.style.context(['rwth-latex-beamer-fira']):
+    fig, ax = plt.subplots()
+    for p in [10, 15, 20, 30, 50, 100]:
+        ax.plot(x, model(x, p), label=p)
+    ax.legend(title='Order')
+    ax.autoscale(tight=True)
+    ax.set(**pparam)
+    # Note: $\mu$ doesn't work with Times font (used by ieee style)
+    ax.set_ylabel(r'Current (A)')
+    fig.savefig('figures/fig4.pdf')
+    fig.savefig('figures/fig4.jpg', dpi=300)
