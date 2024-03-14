@@ -4,7 +4,7 @@
 axes.prop_cycle : cycler('color', ['00549F', '000000', 'E30066', 'FFED00', '006165', '0098A1', '57AB27', 'BDCD00', 'F6A800', 'CC071E', 'A11035', '612158', '7A6FAC'])
 
 # Set default figure size
-figure.figsize : 5.826771827867718, 3.601143034312602
+figure.figsize : 12.703545316175454, 7.851222783020961
 figure.dpi : 1200
 
 # Set x axis
@@ -15,7 +15,7 @@ xtick.minor.size : 1.5
 xtick.minor.width : 0.5
 xtick.minor.visible : True
 xtick.top : True
-xtick.labelsize: 8
+xtick.labelsize: 12
 
 # Set y axis
 ytick.direction : in
@@ -25,7 +25,7 @@ ytick.minor.size : 1.5
 ytick.minor.width : 0.5
 ytick.minor.visible : True
 ytick.right : True
-ytick.labelsize: 8
+ytick.labelsize: 12
 
 # Set line widths
 axes.linewidth : 0.5
@@ -34,14 +34,17 @@ lines.linewidth : 1.
 
 # Set legend style
 legend.frameon : True
-legend.fontsize: 8
+legend.fontsize: 12
 
 # Always save as 'tight'
 savefig.bbox : tight
 savefig.pad_inches : 0.05
 
 # Use serif fonts
-font.size: 11
+font.size: 16
+axes.labelsize: 16
+axes.titlesize: 16
+figure.titlesize: 20
 
 # Use LaTeX for math formatting
 text.usetex : True
