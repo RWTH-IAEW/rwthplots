@@ -75,7 +75,7 @@ with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='RWTHPlots',
-    version='2.0.2',
+    version='2.0.3',
     author="Steffen Kortmann",
     author_email="steffen.kortmann@rwth-aachen.de",
     description="Adding standard themes with RWTH Aachen University colours to matplotlib",

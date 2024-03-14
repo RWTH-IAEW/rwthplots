@@ -27,7 +27,7 @@ Institut für Elektrische Anlagen und Netze, Digitalisierung und Energiewirtscha
 """
 
 
-def set_size(width, fraction=1, subplots=(1, 1)):
+def set_size(width: [float,str], fraction=1, subplots=(1, 1)):
     """Set figure dimensions to avoid scaling in LaTeX.
 
     Parameters
@@ -45,8 +45,12 @@ def set_size(width, fraction=1, subplots=(1, 1)):
     """
     if width == 'thesis':
         width_pt = 426.79135
-    elif width == 'beamer':
-        width_pt = 307.28987
+    elif width == 'beamer-full':
+        # width_pt = 307.28987
+        width_pt = 918.08522
+    elif width == 'beamer-half':
+        # width_pt = 307.28987
+        width_pt = 440.67697
     else:
         width_pt = width
 

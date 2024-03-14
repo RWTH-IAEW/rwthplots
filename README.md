@@ -13,21 +13,19 @@ These are the corporate design colors at RWTH Aachen University.
 | You need to use pip <=23.0.1, otherwise post-installation hook fails! |
 
 # Installation via
-* (basic) clone folder and navigate to the repository then
+
+* (simplest) pip install from gitlab (requires gitlab credentials
+    * open terminal
+        ```sh
+        pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+        ```
+
+* (also ok) clone folder from gitlab and navigate to the repository then
   * open terminal
     ```sh
     pip install --upgrade pip==23.0.1
     pip install -e .
     ```
-  * open python console
-    ```python3
-    # to check successful installation
-    import matplotlib.pyplot as plt
-    plt.style.available
-  
-    # for simple usage
-    import matplotlib.pyplot as plt
-    plt.style.use('rwth-latex')
     ```
 
 * (advanced) alternatively using a ssh-key
@@ -35,16 +33,17 @@ These are the corporate design colors at RWTH Aachen University.
     ```sh
     pip install git+ssh://git@gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
     ``` 
-  * open python console
-    ```python
-    # to check succesful installation
-    import matplotlib.pyplot as plt
-    plt.style.available
 
-    # for simple usage
-    import matplotlib.pyplot as plt
-    plt.style.use('rwth-latex')
-    ```
+Finally open python console to check succesful installation
+
+```python
+import matplotlib.pyplot as plt
+plt.style.available
+
+# for simple usage
+import matplotlib.pyplot as plt
+plt.style.use('rwth-latex')
+```
 
 
 <!-- USAGE EXAMPLES -->
