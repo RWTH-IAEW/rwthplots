@@ -19,16 +19,15 @@ Also consider to export files as .pgf to be used with LaTeX: https://jwalton.inf
 
 * (simplest) pip install from gitlab (requires gitlab credentials
     * open terminal
-        ```sh
-        pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-        ```
+    ```sh
+    pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+    ```
 
 * (also ok) clone folder from gitlab and navigate to the repository then
   * open terminal
     ```sh
     pip install --upgrade pip==23.0.1
     pip install -e .
-    ```
     ```
 
 * (advanced) alternatively using a ssh-key
