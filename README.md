@@ -11,21 +11,23 @@ These are the corporate design colors at RWTH Aachen University.
 | ⚠️ Warning                                                            | 
 |-----------------------------------------------------------------------|
 | You need to use pip <=23.0.1, otherwise post-installation hook fails! |
+| There are known issues that LaTeX cannot be displayed via PyCharm due to backend problems, but it works by using the 'rwth-word' style first and inspect the figure and if it is ready for export, ``plt.savefig()`` works easily. |
+
+Also consider to export files as .pgf to be used with LaTeX: https://jwalton.info/Matplotlib-latex-PGF/
 
 # Installation via
 
 * (simplest) pip install from gitlab (requires gitlab credentials
     * open terminal
-        ```sh
-        pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-        ```
+    ```sh
+    pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+    ```
 
 * (also ok) clone folder from gitlab and navigate to the repository then
   * open terminal
     ```sh
     pip install --upgrade pip==23.0.1
     pip install -e .
-    ```
     ```
 
 * (advanced) alternatively using a ssh-key
@@ -49,7 +51,6 @@ plt.style.use('rwth-latex')
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-There are known issues that LaTeX cannot be displayed via PyCharm, but it works by using the 'rwth-word' style first and inspect the figure and if it is ready for export, ``plt.savefig()`` works easily.
 
 ### Prerequisites
 
