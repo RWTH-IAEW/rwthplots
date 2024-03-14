@@ -75,7 +75,7 @@ with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='RWTHPlots',
-    version='2.0.0',
+    version='2.0.2',
     author="Steffen Kortmann",
     author_email="steffen.kortmann@rwth-aachen.de",
     description="Adding standard themes with RWTH Aachen University colours to matplotlib",
@@ -91,7 +91,7 @@ setup(
         "python"
     ],
     url="https://github.com/skortmann/RWTHPlots",
-    install_requires=['matplotlib', ],
+    install_requires=['matplotlib', 'rwth-CD-colors'],
     packages=['RWTHPlots'],
     cmdclass={'install': PostInstallMoveFile, }
 )
