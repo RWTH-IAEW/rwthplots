@@ -1,83 +1,43 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-"""
-Definition of RWTH standard theme for plotting.
-
-# Installation via
- > pip install .
-
-# to check successful installation run python console
- > import matplotlib.pyplot as plt
- > plt.style.available
-
-# for simple usage run in python console
- > import matplotlib.pyplot as plt
- > plt.style.use('rwth-latex')
-
-# release note: certain characters need special escaping such as
-$ % & ~ ^ \ { } \( \) \[ \]
-
-# Temporary styling add to python scripr or run in python console
- > with plt.style.context('dark_background'):
- >   plt.plot(np.sin(np.linspace(0, 2 * np.pi)), 'r-o')
- > plt.show()
-
-all credits go out to John D. Garret https://github.com/garrettj403/SciencePlots
-
-High Voltage Equipment and Grids, Digitalization and Energy Economics (IAEW)
-(c) 2022, Steffen Kortmann
-"""
 import atexit
 import glob
 import os
 import shutil
-
+import subprocess
 from setuptools import setup
 from setuptools.command.install import install
 
-
 def install_styles():
-    """Post-installation script to install styles defined in the /styles folder"""
-
-    # import matplotlib inside function to avoid import error during installation initialization
     import matplotlib
-
-    # Find all style files
     style_files = glob.glob('RWTHPlots/styles/**/*.mplstyle', recursive=True)
-
-    # Find stylelib directory (where the *.mplstyle files go)
-    print("Your style sheets are located at: {}".format(
-        os.path.join(matplotlib.__path__[0], 'mpl-data', 'stylelib')))
     mpl_style_lib_dir = os.path.join(matplotlib.get_configdir(), "stylelib")
     if not os.path.exists(mpl_style_lib_dir):
         os.makedirs(mpl_style_lib_dir)
-
-    # Copy files over
-    print("Installing styles into", mpl_style_lib_dir)
     for style_file in style_files:
-        print(os.path.basename(style_file))
         shutil.copy(style_file, os.path.join(mpl_style_lib_dir, os.path.basename(style_file)))
 
-
 class PostInstallMoveFile(install):
-    """Post-installation class to run the installation script"""
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        atexit.register(install_styles)
+        atexit.register(self.run_post_install_tasks)
 
+    def run_post_install_tasks(self):
+        install_styles()
+        print("Registering custom colormaps...")
+        script_path = os.path.join(os.path.dirname(__file__), "RWTHPlots", "register_colors.py")
+        try:
+            subprocess.check_call(['python', script_path])
+        except Exception as e:
+            print(f"Failed to register colormaps: {e}")
 
-# Get description from README
 root = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name='RWTHPlots',
-    version='2.1.0',
-    author="Steffen Kortmann",
-    author_email="steffen.kortmann@rwth-aachen.de",
+    version='2.2.0',
+    author="Steffen Kortmann, Florian Schmidtke",
+    author_email="s.kortmann@iaew.rwth-aachen.de, f.schmidtke@iaew.rwth-aachen.de",
     description="Adding standard themes with RWTH Aachen University colours to matplotlib",
     long_description=long_description,
     long_description_content_type='text/markdown',
