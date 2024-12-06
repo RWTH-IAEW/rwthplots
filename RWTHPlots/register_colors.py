@@ -9,10 +9,11 @@ Digitalization and Energy Economics (IAEW), RWTH Aachen University,
 05.12.2024, s.kortmann. All rights reserved.
 """
 
-from cmap import RWTHcmaps
+import logging
+
+from RWTHPlots.cmap import RWTHcmaps
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-
 
 def register_rwth_colormaps():
     """
@@ -29,12 +30,12 @@ def register_rwth_colormaps():
             rwth_cmaps.funcdict[cmap_name]()
             # Register the generated colormap with Matplotlib
             mpl.colormaps.register(name=cmap_name, cmap=rwth_cmaps.cmap)
-            print(f"Registered RWTH colormap: {cmap_name}")
+            logging.info(f"Registered RWTH colormap: {cmap_name}")
 
 def plot_cmap():
     # Test the colormaps by printing the registered colormaps
     print("Registered colormaps:")
-    print(mpl.colormaps())
+    print(sorted(mpl.colormaps(), reverse=True))
 
     # Visualize a test colormap
     cmap_name = 'divergent_RWTH'
@@ -46,7 +47,7 @@ def plot_cmap():
     ]
 
     plt.figure(figsize=(8, 2))
-    plt.imshow([list(range(rwth_divergent_colors))], cmap=cmap_name, aspect="auto")
+    plt.imshow([list(range(len(rwth_divergent_colors)))], cmap=cmap_name, aspect="auto")
     plt.gca().set_axis_off()
     plt.title(f"Example: {cmap_name}")
     plt.tight_layout()
@@ -54,5 +55,6 @@ def plot_cmap():
 
 if __name__ == "__main__":
     register_rwth_colormaps()
+    plot_cmap()
 
 

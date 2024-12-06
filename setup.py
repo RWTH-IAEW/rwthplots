@@ -22,12 +22,6 @@ class PostInstallMoveFile(install):
 
     def run_post_install_tasks(self):
         install_styles()
-        print("Registering custom colormaps...")
-        script_path = os.path.join(os.path.dirname(__file__), "RWTHPlots", "register_colors.py")
-        try:
-            subprocess.check_call(['python', script_path])
-        except Exception as e:
-            print(f"Failed to register colormaps: {e}")
 
 root = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
@@ -35,7 +29,7 @@ with open(os.path.join(root, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='RWTHPlots',
-    version='2.2.0',
+    version='2.3.0',
     author="Steffen Kortmann, Florian Schmidtke",
     author_email="s.kortmann@iaew.rwth-aachen.de, f.schmidtke@iaew.rwth-aachen.de",
     description="Adding standard themes with RWTH Aachen University colours to matplotlib",

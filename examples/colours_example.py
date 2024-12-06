@@ -8,10 +8,9 @@ Copyright (c) by Institute for High Voltage Equipment and Grids,
 Digitalization and Energy Economics (IAEW), RWTH Aachen University,
 14.03.2024, s.kortmann. All rights reserved.
 """
-
-import matplotlib.pyplot as plt
-from rwth_colors import colors
 import RWTHPlots
+from rwth_colors import colors
+import matplotlib.pyplot as plt
 plt.style.use('rwth-latex-beamer')
 
 import os
