@@ -1,6 +1,5 @@
-import matplotlib
+import RWTHPlots
 import matplotlib.pyplot as plt
-from RWTHPlots.cmap import rwth_cmap
 
 import pytest
 
