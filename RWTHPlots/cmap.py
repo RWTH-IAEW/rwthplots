@@ -408,8 +408,7 @@ class RWTHcmaps(object):
         Define colormap 'rwth_divergent' for diverging data.
         """
         # Define the RWTH divergent color map
-        divergent_rwth_colors = [
-            '#00549f', '#37628f', '#4c7080', '#5c7e73', '#6a8b67', '#77995b',
+        divergent_rwth_colors = ['#00549f', '#37628f', '#4c7080', '#5c7e73', '#6a8b67', '#77995b',
             '#86a650', '#96b345', '#a7bf3a', '#bbcc2e', '#d0d722', '#e6e213',
             '#fddd01', '#fbce04', '#f8be09', '#f5ae0e', '#f19e12', '#ed8e15',
             '#e87e17', '#e36d1a', '#de5c1b', '#d8481d', '#d2311d', '#cc071e'
