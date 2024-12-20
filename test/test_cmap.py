@@ -13,7 +13,6 @@ import pytest
 def test_cmap_rwth_cmap(color_map_name):
     """Test to initialize the rwth_cmap"""
 
-    matplotlib.colormaps.register(rwth_cmap(color_map_name))
     plt.set_cmap(color_map_name)
 
     assert color_map_name == plt.get_cmap().name
