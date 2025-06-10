@@ -10,11 +10,15 @@ authors = [
 requires-python = ">=3.9"
 dependencies = [
     "matplotlib>=3.9.4",
-    "numpy>=2.0.2",
-    "pytest>=8.4.0",
     "rwth-cd-colors>=0.1.1",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "coverage>=7.8.2",
+    "pytest>=8.4.0",
+]
