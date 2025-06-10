@@ -1,3 +1,4 @@
+import rwthplots
 import matplotlib
 import matplotlib.pyplot as plt
 
