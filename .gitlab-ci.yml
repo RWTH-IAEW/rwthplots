@@ -6,8 +6,11 @@ stages:
   - echo -e "\e[0Ksection_start:`date +%s`:dependencies[collapsed=true]\r\e[0KInstalling Python dependencies..."
   - python -m venv venv
   - source venv/bin/activate
-  - pip install .
-  - pip install -qq pytest pytest-cov
+  - pip install uv
+  # Use `uv` to install the local package
+  - uv sync
+  - uv build
+  - uv add --dev pytest coverage
   - echo -e "\e[0Ksection_end:`date +%s`:dependencies\r\e[0K"
 
 # ************************ testing ************************
