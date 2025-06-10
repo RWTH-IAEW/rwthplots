@@ -10,7 +10,7 @@ def test_style_use(style):
     """Test to set and use style"""
 
     # load during installation registered installation
-    plt.style.use('rwthplots.rwth-latex-beamer')
+    plt.style.use('rwth-latex-beamer')
     rc_params = matplotlib.RcParams
 
     # load and register from style file during runtime
