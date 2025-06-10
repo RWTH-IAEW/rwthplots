@@ -50,3 +50,4 @@ with plt.style.context(['rwth-latex']):
     ax.set_ylabel(r'Current (A)')
     fig.savefig('figures/fig2a.pdf')
     fig.savefig('figures/fig2a.jpg', dpi=300)
+    plt.show()

@@ -18,7 +18,8 @@ Copyright (c) by Institute for High Voltage Equipment and Grids,
 Digitalization and Energy Economics (IAEW), RWTH Aachen University,
 05.12.2024, s.kortmann. All rights reserved.
 """
-import RWTHPlots
+import rwthplots
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -33,7 +34,7 @@ x = np.linspace(-4 * np.pi, 4 * np.pi, 500)  # x values for line plot
 y = np.sin(x)  # Example sinusoidal data
 
 # List all registered colormaps
-colormaps = sorted([cmap for cmap in RWTHPlots.cmap.RWTHcmaps().namelist])
+colormaps = sorted([cmap for cmap in rwthplots.cmap.RWTHcmaps().namelist])
 
 print(f"Testing {len(colormaps)} colormaps...")
 
@@ -53,7 +54,7 @@ for cmap_name in colormaps:
 
         # Line plot with the colormap
         plt.figure(figsize=(6, 4))
-        colors = plt.cm.get_cmap(cmap_name)(np.linspace(0, 1, 5))
+        colors = matplotlib.colormaps.get_cmap(cmap_name)(np.linspace(0, 1, 5))
         for i, color in enumerate(colors):
             plt.plot(x, y + i * 0.5, color=color, label=f"Line {i + 1}")
         plt.title(f"Line Plot with {cmap_name}")

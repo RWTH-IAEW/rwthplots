@@ -11,7 +11,7 @@ Digitalization and Energy Economics (IAEW), RWTH Aachen University,
 
 import logging
 
-from RWTHPlots.cmap import RWTHcmaps
+from rwthplots.cmap import RWTHcmaps
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
