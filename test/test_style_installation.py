@@ -6,4 +6,4 @@ import pytest
 def test_installed_style(style):
     installed_styles = plt.style.available
 
-    assert "rwth-latex" in installed_styles
+    assert style in installed_styles
