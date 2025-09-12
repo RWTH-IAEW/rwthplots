@@ -1,6 +1,6 @@
 [project]
 name = "rwthplots"
-version = "3.0.3"
+version = "3.0.4"
 description = "Adding standard themes with RWTH Aachen University colours to matplotlib"
 readme = "README.md"
 authors = [
