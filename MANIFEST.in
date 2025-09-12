@@ -1,2 +1,6 @@
-include README.md
 recursive-include src/rwthplots/styles *.mplstyle
+include README.md LICENSE
+
+prune examples
+prune docs
+prune test

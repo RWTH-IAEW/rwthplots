@@ -4,19 +4,24 @@ version = "3.0.1"
 description = "Adding standard themes with RWTH Aachen University colours to matplotlib"
 readme = "README.md"
 authors = [
-    { name = "Steffen Kortmann", email = "s.kortmann@iaew.rwth-aachen.de" },
-    { name = "Florian Schmidtke", email = "f.schmidtke@iaew.rwth-aachen.de" },
+  { name = "Steffen Kortmann", email = "s.kortmann@iaew.rwth-aachen.de" },
+  { name = "Florian Schmidtke", email = "f.schmidtke@iaew.rwth-aachen.de" },
 ]
+# ⚠️ Matplotlib 3.9 generally needs Python ≥3.10. Choose one:
+# requires-python = ">=3.10"
 requires-python = ">=3.9"
 dependencies = [
-    "matplotlib>=3.9.4",
-    "rwth-cd-colors>=0.1.1",
+  # If you keep Python 3.9, consider pinning to <3.9
+  # "matplotlib>=3.8,<3.9",
+  "matplotlib>=3.9.4",
+  "rwth-cd-colors>=0.1.1",
 ]
+
 [dependency-groups]
 dev = [
-    "coverage>=7.8.2",
-    "pytest>=8.4.0",
-    "pytest-cov>=6.1.1",
+  "coverage>=7.8.2",
+  "pytest>=8.4.0",
+  "pytest-cov>=6.1.1",
 ]
 
 [build-system]
@@ -29,3 +34,11 @@ include = ["rwthplots*"]
 
 [tool.setuptools.package-dir]
 "" = "src"
+
+# ✅ ship the .mplstyle files inside the wheel
+[tool.setuptools.package-data]
+rwthplots = ["styles/*.mplstyle"]
+
+# (optional) exclude heavy/irrelevant content from the wheel
+[tool.setuptools.exclude-package-data]
+rwthplots = ["**/examples/**", "**/docs/**", "**/test/**"]
