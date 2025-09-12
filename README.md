@@ -40,6 +40,9 @@ plt.style.use("rwthplots.styles.rwth-latex")
 
 # Or RWTH Word style
 plt.style.use("rwthplots.styles.rwth-word")
+
+# Or RWTH PowerPoint style
+plt.style.use("rwthplots.styles.rwth-pptx")
 ```
 
 ## Usage

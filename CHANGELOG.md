@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.2
+### Fixed
+- Fixed installation issue with pip
+
 ## v2.1.0
 ### Added or Changed
 - Added rwth-latex-beamer.mplstyle
