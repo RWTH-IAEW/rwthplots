@@ -1,34 +1,49 @@
 stages:
   - testing
 
-.install_dependencies: &install
-  - python --version
-  - echo -e "\e[0Ksection_start:`date +%s`:dependencies[collapsed=true]\r\e[0KInstalling Python dependencies..."
-  - python -m venv venv
-  - source venv/bin/activate
-  - pip install .
-  - pip install -qq pytest pytest-cov
-  - echo -e "\e[0Ksection_end:`date +%s`:dependencies\r\e[0K"
+variables:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+  MPLBACKEND: "Agg"            # headless Matplotlib in CI
+  UV_LINK_MODE: "copy"         # faster, avoids hardlinks in some runners
+  UV_NO_SYNC_PROGRESS: "1"
 
-# ************************ testing ************************
+.install_with_uv: &install_with_uv
+  - python --version
+  - echo -e "\e[0Ksection_start:`date +%s`:uv_install[collapsed=true]\r\e[0KInstall uv..."
+  - curl -LsSf https://astral.sh/uv/install.sh | sh
+  - export PATH="$HOME/.local/bin:$PATH"
+  - uv --version
+  - echo -e "\e[0Ksection_end:`date +%s`:uv_install\r\e[0K"
+  - echo -e "\e[0Ksection_start:`date +%s`:deps[collapsed=true]\r\e[0KCreate venv & sync deps..."
+  # Create project venv that matches the matrix Python
+  - uv venv --python "${PY_VERSION}"
+  # Install the project and dev dependencies from pyproject's [dependency-groups]
+  - uv sync --group dev
+  - echo -e "\e[0Ksection_end:`date +%s`:deps\r\e[0K"
+
 pytest:
   stage: testing
+  image: "python:${PY_VERSION}"
   tags:
     - docker
-  image: python:${PY_VERSION}
   before_script:
-    - *install
+    - *install_with_uv
   script:
-    - cd test
-    - python -m pytest --junitxml=pytest_$PY_VERSION.xml --cov=RWTHPlots
-  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
-  needs: [ ]
+    # run tests via uv in the project venv
+    - uv run python -m pytest -q
+        --junitxml=pytest_${PY_VERSION}.xml
+        --cov=rwthplots
+        --cov-report=term-missing
+  coverage: '/TOTAL.+\s([0-9]{1,3}%)/'
   artifacts:
     when: always
     reports:
-      junit: test/pytest_$PY_VERSION.xml
+      junit: pytest_${PY_VERSION}.xml
     paths:
-      - test/pytest_$PY_VERSION.xml
+      - pytest_${PY_VERSION}.xml
+      - .coverage
   parallel:
     matrix:
-      - PY_VERSION: [ "3.9", "3.10", "3.11" ]
+      - PY_VERSION: ["3.9", "3.10", "3.11"]
