@@ -1,22 +1,19 @@
-import rwthplots
+from pathlib import Path
 import matplotlib
 import matplotlib.pyplot as plt
-
 import pytest
-from pathlib import Path
-
 
 @pytest.mark.parametrize("style", ["rwth-latex", "rwth-word"])
 def test_style_use(style):
-    """Test to set and use style"""
+    """Style loaded via dotted name and via file path must produce identical rcParams."""
 
-    # load during installation registered installation
+    # 1) load via dotted package style
     plt.style.use(f"rwthplots.styles.{style}")
-    rc_params = matplotlib.RcParams
+    rc_params_pkg = matplotlib.rcParams.copy()
 
-    # load and register from style file during runtime
-    style_path = Path(__file__).parents[1] / "rwthplots" / "styles"
-    plt.style.use(style_path / f"{style}.mplstyle")
-    rc_params_compare = matplotlib.RcParams
+    # 2) load via direct file path from the repo (src-layout!)
+    style_path = Path(__file__).parents[1] / "src" / "rwthplots" / "styles" / f"{style}.mplstyle"
+    plt.style.use(style_path)
+    rc_params_file = matplotlib.rcParams.copy()
 
-    assert rc_params == rc_params_compare
+    assert rc_params_pkg == rc_params_file

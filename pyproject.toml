@@ -1,6 +1,6 @@
 [project]
 name = "rwthplots"
-version = "3.0.1"
+version = "3.0.2"
 description = "Adding standard themes with RWTH Aachen University colours to matplotlib"
 readme = "README.md"
 authors = [
@@ -35,9 +35,9 @@ include = ["rwthplots*"]
 [tool.setuptools.package-dir]
 "" = "src"
 
-# ✅ ship the .mplstyle files inside the wheel
 [tool.setuptools.package-data]
 rwthplots = ["styles/*.mplstyle"]
+
 
 # (optional) exclude heavy/irrelevant content from the wheel
 [tool.setuptools.exclude-package-data]

@@ -1,10 +1,11 @@
-import rwthplots
+# test/test_style_installation.py
 import matplotlib.pyplot as plt
 import pytest
 
-
-@pytest.mark.parametrize("style", ["rwth-latex", "rwth-word"])
+@pytest.mark.parametrize("style", [
+    "rwthplots.styles.rwth-latex",
+    "rwthplots.styles.rwth-word",
+])
 def test_installed_style(style):
-    installed_styles = plt.style.available
-
-    assert style in installed_styles
+    # Should load without raising
+    plt.style.use(style)
