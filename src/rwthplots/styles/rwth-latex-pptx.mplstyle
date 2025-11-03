@@ -43,7 +43,7 @@ legend.fontsize  : 16
 font.family     : sans-serif
 font.sans-serif : Arial, DejaVu Sans, Liberation Sans
 font.size        : 16
-text.color       : #404040
+text.color       : "#404040"
 
 # LaTeX preamble – sans serif maths to match slides
 # (Requires LaTeX packages helvet & sansmath on the system)

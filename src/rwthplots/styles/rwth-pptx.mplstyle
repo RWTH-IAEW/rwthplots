@@ -43,7 +43,7 @@ legend.fontsize  : 16
 font.family      : sans-serif
 font.sans-serif  : Arial
 font.size        : 16
-text.color       : #404040
+text.color       : "#404040"
 
 # Backgrounds
 figure.facecolor : none      # transparent canvas (nice on PPT background)
