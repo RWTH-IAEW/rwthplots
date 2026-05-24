@@ -1,0 +1,3 @@
+# US Letter paper, half-column (3.25 in)
+# 234.88 pt / 72.27 = 3.250 in
+figure.figsize : 3.250, 2.009

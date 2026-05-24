@@ -1,0 +1,3 @@
+# Nature, single column (89 mm)
+# 253.16 pt / 72.27 = 3.503 in
+figure.figsize : 3.503, 2.165

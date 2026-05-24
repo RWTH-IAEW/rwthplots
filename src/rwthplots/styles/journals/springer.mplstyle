@@ -1,0 +1,26 @@
+# --- Springer journal style ---------------------------------------------------
+# Suitable for Springer LNCS and most Springer journals (122 mm text width).
+# Reference: https://www.springer.com/gp/authors-editors/journal-author
+
+# Figure geometry: 122 mm (LNCS full page), golden-ratio height
+figure.figsize : 4.803, 2.968
+figure.dpi     : 600
+
+# Typography
+font.family     : serif
+font.size       : 10
+axes.labelsize  : 10
+xtick.labelsize : 9
+ytick.labelsize : 9
+legend.fontsize : 9
+axes.titlesize  : 10
+
+# Lines
+lines.linewidth  : 1.0
+axes.linewidth   : 0.5
+grid.linewidth   : 0.5
+lines.markersize : 3
+
+# Saving
+savefig.bbox       : tight
+savefig.pad_inches : 0.01

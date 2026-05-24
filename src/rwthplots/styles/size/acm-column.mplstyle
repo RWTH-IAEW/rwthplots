@@ -1,0 +1,3 @@
+# ACM, single column (3.33 in)
+# 240.66 pt / 72.27 = 3.330 in
+figure.figsize : 3.330, 2.058

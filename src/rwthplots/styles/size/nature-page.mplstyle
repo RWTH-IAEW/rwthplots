@@ -1,0 +1,3 @@
+# Nature, full page (183 mm)
+# 520.47 pt / 72.27 = 7.203 in
+figure.figsize : 7.203, 4.451

@@ -343,12 +343,12 @@ axes.spines.right:  True
 
 axes.unicode_minus: True  # use Unicode for the minus symbol rather than hyphen.  See
                            # https://en.wikipedia.org/wiki/Plus_and_minus_signs#Character_codes
-axes.prop_cycle: cycler('color', ['00549F', '000000', 'E30066', 'FFED00', '006165', '0098A1', '57AB27', 'BDCD00', 'F6A800', 'CC071E', 'A11035', '612158', '7A6FAC'])
+axes.prop_cycle: cycler(color=['#00549F', '#000000', '#E30066', '#FFED00', '#006165', '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E', '#A11035', '#612158', '#7A6FAC'])
                   # color cycle for plot lines as list of string color specs:
                   # single letter, long name, or web-style hex
                   # As opposed to all other parameters in this file, the color
                   # values must be enclosed in quotes for this parameter,
-                  # e.g. '1f77b4', instead of 1f77b4.
+                  # e.g. '#1f77b4', instead of 1f77b4.
                   # See also https://matplotlib.org/tutorials/intermediate/color_cycle.html
                   # for more details on prop_cycle usage.
 axes.xmargin:   .05  # x margin.  See `axes.Axes.margins`
@@ -505,9 +505,7 @@ figure.subplot.hspace: 0.2    # the amount of height reserved for space between 
                                # expressed as a fraction of the average axis height
 
 ## Figure layout
-figure.autolayout: True  # When True, automatically adjust subplot
-                           # parameters to make the plot fit the figure
-                           # using `tight_layout`
+figure.autolayout: False  # Disabled — constrained_layout is used instead
 figure.constrained_layout.use: True  # When True, automatically make plot
                                        # elements fit on the figure. (Not
                                        # compatible with `autolayout`, above).
@@ -522,7 +520,7 @@ figure.constrained_layout.wspace: 0.02     # a fraction of the subplot widths be
 ## ***************************************************************************
 image.aspect:          equal        # {equal, auto} or a number
 image.interpolation:   antialiased  # see help(imshow) for options
-image.cmap:            extended_RWTH_discrete      # A colormap name (plasma, magma, etc.)
+image.cmap:            viridis                     # set to extended_RWTH_discrete after 'import rwthplots'
 image.lut:             65          # the size of the colormap lookup table
 image.origin:          upper        # {lower, upper}
 image.resample:        True

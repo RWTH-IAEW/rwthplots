@@ -1,0 +1,27 @@
+# --- ACM journal style --------------------------------------------------------
+# Suitable for ACM Digital Library journals and conference proceedings.
+# Single column: 3.33 in; full page: 7.0 in.
+# Reference: https://www.acm.org/publications/proceedings-template
+
+# Figure geometry: 3.33 in single column, golden-ratio height
+figure.figsize : 3.330, 2.058
+figure.dpi     : 600
+
+# Typography
+font.family     : serif
+font.size       : 9
+axes.labelsize  : 9
+xtick.labelsize : 8
+ytick.labelsize : 8
+legend.fontsize : 8
+axes.titlesize  : 9
+
+# Lines
+lines.linewidth  : 1.0
+axes.linewidth   : 0.5
+grid.linewidth   : 0.5
+lines.markersize : 3
+
+# Saving
+savefig.bbox       : tight
+savefig.pad_inches : 0.01

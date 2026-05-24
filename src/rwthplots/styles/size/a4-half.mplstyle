@@ -1,0 +1,3 @@
+# A4 paper, half-column (85 mm)
+# 241.85 pt / 72.27 = 3.346 in
+figure.figsize : 3.346, 2.068

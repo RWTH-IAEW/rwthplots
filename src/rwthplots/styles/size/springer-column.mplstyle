@@ -1,0 +1,3 @@
+# Springer LNCS, full page (122 mm)
+# 346.88 pt / 72.27 = 4.800 in
+figure.figsize : 4.800, 2.967

@@ -46,4 +46,4 @@ pytest:
       - .coverage
   parallel:
     matrix:
-      - PY_VERSION: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+      - PY_VERSION: ["3.10", "3.11", "3.12", "3.13"]

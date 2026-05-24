@@ -3,7 +3,7 @@
 
 # Set color cycle
 # Set line style as well for black and white graphs
-axes.prop_cycle : (cycler('color', ['k', 'r', 'b', 'g']) + cycler('ls', ['-', '--', ':', '-.']))
+axes.prop_cycle : (cycler(color=['k', 'r', 'b', 'g']) + cycler('ls', ['-', '--', ':', '-.']))
 
 # Set default figure size
 figure.figsize : 3.3, 2.5

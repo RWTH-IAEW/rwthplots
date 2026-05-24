@@ -1,0 +1,3 @@
+# IEEE Transactions, full page / double column (7.0 in)
+# 505.89 pt / 72.27 = 7.000 in
+figure.figsize : 7.000, 4.326

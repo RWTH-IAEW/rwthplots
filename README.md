@@ -1,87 +1,165 @@
-# Colormap with RWTH colors for Matplotlib
-Adding RWTH Aachen University’s corporate design colors and ready-to-use Matplotlib style sheets (Word/LaTeX/PowerPoint).
+# rwthplots — RWTH Aachen University colours for Matplotlib
 
-## Getting Started
+Matplotlib style sheets, colormaps, and colour utilities based on the
+RWTH Aachen University corporate design palette.
 
-These are the corporate design colors at RWTH Aachen University.
+## Gallery
 
-# Installation via
+**RWTH colour palette** — 13 base colours × 5 tint levels
 
-* (simplest) pip install from gitlab (requires gitlab credentials
-    * open terminal
-    ```sh
-    pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-    ```
+![Colour palette](docs/images/color_palette.png)
 
-* (also ok) clone folder from gitlab and navigate to the repository then
-  * open terminal
-    ```sh
-    git clone https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-    cd RWTHPlots
-    uv pip install -e .
-      ```
+**Line plot with `context()` and `pick_colors(6)`**
 
-* (advanced) alternatively using a ssh-key
-  * open terminal
-    ```sh
-    pip install git+ssh://git@gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-    ``` 
+![Style demo](docs/images/style_demo.png)
 
-Finally open python console to check succesful installation
+**Colormaps** — selection of available maps
 
-```python
-import matplotlib.pyplot as plt
+![Colormaps](docs/images/colormaps.png)
 
-# List installed styles
-print([s for s in plt.style.available if s.startswith("rwthplots")])
+**Climate stripes** — `divergent_RWTH` colormap
 
-# Use RWTH LaTeX style
-plt.style.use("rwthplots.styles.rwth-latex")
+![Climate stripes](docs/images/climate_stripes.png)
 
-# Or RWTH Word style
-plt.style.use("rwthplots.styles.rwth-word")
+## Installation
 
-# Or RWTH PowerPoint style
-plt.style.use("rwthplots.styles.rwth-pptx")
+```sh
+# From GitLab (recommended)
+pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+
+# Clone and install in editable mode
+git clone https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+cd RWTHPlots
+uv pip install -e .
 ```
 
-## Usage
+Requires Python ≥ 3.10 and Matplotlib ≥ 3.10.
+
+## Quick start
+
 ```python
+import rwthplots                    # registers all colormaps and styles on import
+import matplotlib.pyplot as plt
+
+# --- Styles ------------------------------------------------------------------
+plt.style.use("rwthplots.styles.rwth-latex")          # LaTeX / thesis
+plt.style.use("rwthplots.styles.rwth-word")           # Word / report
+plt.style.use("rwthplots.styles.rwth-pptx")           # PowerPoint
+plt.style.use("rwthplots.styles.rwth-dark")           # Dark background
+
+# Compose styles (base + colour override + grid)
+plt.style.use(["rwthplots.styles.rwth-latex",
+               "rwthplots.styles.color.blue",
+               "rwthplots.styles.misc.grid"])
+
+# Or use the context manager (short names auto-expanded)
+with rwthplots.context("rwth-latex", "color.blue", "misc.grid"):
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+
+# --- Colormaps ---------------------------------------------------------------
+plt.set_cmap("extended_RWTH_discrete")        # registered automatically
+plt.set_cmap("divergent_RWTH")                # blue → red diverging
+plt.set_cmap("viridis_RWTH")                  # RWTH-branded perceptual gradient
+plt.set_cmap("heat_RWTH")                     # blue → orange → white sequential
+plt.set_cmap("thermal_RWTH")                  # petrol → yellow sequential
+plt.set_cmap("divergent_bm_RWTH")             # blue–white–magenta diverging
+plt.set_cmap("divergent_gy_RWTH")             # green–white–yellow diverging
+
 from rwthplots.cmap import rwth_cmap
-import matplotlib.pyplot as plt
-import matplotlib
+cmap = rwth_cmap("extended_RWTH_discrete", lut=13)
 
-# Register and use extended RWTH discrete colormap
-matplotlib.colormaps.register(rwth_cmap("extended_RWTH_discrete"))
-plt.set_cmap("extended_RWTH_discrete")
+# --- Colour sets (qualitative) -----------------------------------------------
+from rwthplots.cmap import rwth_cset
+cset = rwth_cset("rwth_100")           # hex strings (default)
+cset.blue                              # '#00549F'
+
+cset_rgb  = rwth_cset("rwth_100", frmt="RGB")   # integer (R,G,B) tuples
+cset_nrgb = rwth_cset("rwth_100", frmt="NRGB")  # normalised float tuples
+
+# --- Figure sizing -----------------------------------------------------------
+from rwthplots.formatter import set_size, list_presets
+fig, ax = plt.subplots(figsize=set_size("ieee-column"))   # 3.5 in
+fig, ax = plt.subplots(figsize=set_size("a4"))            # A4 text width
+print(list_presets())                                     # all available names
+
+# Journal size styles (composable)
+plt.style.use(["rwthplots.styles.rwth-latex",
+               "rwthplots.styles.size.ieee-column"])
+
+# --- Multi-format export -----------------------------------------------------
+rwthplots.save_figure(fig, "output/my_plot", formats=["pdf", "png"], dpi=300)
+
+# --- Accessibility -----------------------------------------------------------
+# Pick N maximally distinct RWTH colours
+colors = rwthplots.pick_colors(4)   # ['#00549F', '#FFED00', ...]
+
+# Simulate CVD and report confusable pairs
+issues = rwthplots.check_accessibility(colors, threshold=20.0)
+
+# Colorblind-safe 6-colour cycle modifier
+plt.style.use(["rwthplots.styles.rwth-latex",
+               "rwthplots.styles.misc.colorblind"])
+
+# --- Palette visualisation ---------------------------------------------------
+fig = rwthplots.plot_color_palette()   # 13 colours × 5 tints grid
+plt.show()
 ```
 
-## Styles
+## Style sheets
 
-rwthplots.styles.rwth-latex → optimized for LaTeX integration (.pgf export works nicely).
-rwthplots.styles.rwth-word → optimized for Word and Office figures.
-rwthplots.styles.rwth-pptx → optimized for PowerPoint figures.
-(optional) add your own custom .mplstyle files under rwthplots/styles/.
+### Base styles
 
-### Prerequisites
+| Name | Use case |
+|---|---|
+| `rwthplots.styles.rwth-latex` | LaTeX/PGF, thesis, journal |
+| `rwthplots.styles.rwth-word` | Word, reports |
+| `rwthplots.styles.rwth-pptx` | PowerPoint |
+| `rwthplots.styles.rwth-latex-pptx` | LaTeX-rendered text in PPT |
+| `rwthplots.styles.rwth-latex-beamer` | Beamer slides |
+| `rwthplots.styles.rwth-dark` | Dark background / screens |
 
-This is an example of how to list things you need to use the software and how to install them.
-* in python script with plotting
-  ```python
-  from RWTHPlots.cmap import rwth_cmap
-  
-  matplotlib.colormaps.register(rwth_cmap('extended_RWTH_discrete'))
-  plt.set_cmap('extended_RWTH_discrete')
-  
-  ```
-* then set cmap for each python plot created with matplotlib to 'extended_RWTH_discrete'
+### Modifier layers
 
-### Hints
-Also consider to export files as .pgf to be used with LaTeX: https://jwalton.info/Matplotlib-latex-PGF/
+Composable on top of any base style:
+
+| Category | Examples |
+|---|---|
+| `color/` | `color.blue`, `color.orange`, `color.green`, … (16 total) |
+| `misc/` | `misc.grid`, `misc.colorblind`, `misc.sans`, `misc.no-latex`, … |
+| `journals/` | `journals.ieee`, `journals.nature`, `journals.elsevier`, `journals.springer`, `journals.aps`, `journals.acm` |
+| `size/` | `size.ieee-column`, `size.a4`, `size.nature-column`, … (15 total) |
+
+## Colormaps
+
+37 colormaps registered on import.  Key maps:
+
+| Name | Type | Description |
+|---|---|---|
+| `extended_RWTH_discrete` | discrete | Full RWTH palette, up to 65 colours (`lut=`) |
+| `continuous_RWTH_discrete` | discrete | Continuous coverage, 1–65 colours (`lut=`) |
+| `divergent_RWTH` | diverging | Blue → green → red |
+| `divergent_bm_RWTH` | diverging | Blue – white – magenta |
+| `divergent_gy_RWTH` | diverging | Green – white – yellow |
+| `viridis_RWTH` | sequential | Violet → turquoise → may green → yellow |
+| `heat_RWTH` | sequential | Blue → orange → white |
+| `thermal_RWTH` | sequential | Petrol → turquoise → green → yellow |
+| `blue_RWTH` | sequential | Blue tint gradient |
+| *(+ 13 single-colour gradients)* | | One per RWTH base colour |
+
+## Development
+
+```sh
+uv sync --group dev
+uv run python -m pytest -q
+uv run python -m pytest --cov=rwthplots --cov-report=term-missing
+MPLBACKEND=Agg uv run python examples/new_features_demo.py
+```
 
 ## License
-Distributed under the MIT License. See `LICENSE.txt` for more information.
 
+MIT — see `LICENSE.txt`.
 
 ## Contact
-Steffen Kortmann - [s.kortmann@iaew.rwth-aachen.de](mailto:s.kortmann@iaew.rwth-aachen.de)
+
+Steffen Kortmann · [s.kortmann@iaew.rwth-aachen.de](mailto:s.kortmann@iaew.rwth-aachen.de)

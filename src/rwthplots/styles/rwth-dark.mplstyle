@@ -1,0 +1,64 @@
+# --- RWTH Dark style ----------------------------------------------------------
+# Dark-background variant for screen presentations and notebooks.
+# Uses 50 % RWTH tints for readability on a black canvas.
+#
+# Inspired by the 'rwth-dark' theme in RWTH-Colors
+# (https://github.com/ifs-rwth-aachen/RWTH-Colors, MIT license,
+# Philipp Simon Leibner at IFS RWTH Aachen).
+
+# Colours — 50 % tints for legibility on dark background
+axes.prop_cycle : cycler(color=["#8EBAE5", "#FDD48F", "#B8D698", "#E69679", "#A8859E", "#CD8B87", "#BCB5D7", "#7DA4A7", "#E0E69A", "#89CCCF", "#F19EB1", "#FFF59B", "#9C9E9F"])
+
+# Axes & titles
+axes.titlesize   : 11
+axes.titleweight : bold
+axes.labelcolor  : white
+axes.edgecolor   : white
+
+# Grid
+axes.grid        : True
+axes.grid.axis   : both
+axes.grid.which  : both
+grid.linestyle   : --
+grid.alpha       : 0.35
+grid.color       : "#333333"
+
+# Ticks
+xtick.labelsize  : 9
+ytick.labelsize  : 9
+xtick.direction  : out
+ytick.direction  : out
+xtick.color      : white
+ytick.color      : white
+xtick.major.size : 4.0
+xtick.minor.size : 2.0
+ytick.major.size : 4.0
+ytick.minor.size : 2.0
+xtick.minor.visible : True
+ytick.minor.visible : True
+
+# Lines & borders
+lines.linewidth  : 1.5
+axes.linewidth   : 0.5
+grid.linewidth   : 0.5
+
+# Legend
+legend.frameon        : True
+legend.fontsize       : 9
+legend.facecolor      : "#1a1a1a"
+legend.edgecolor      : "#444444"
+legend.labelcolor     : white
+
+# Fonts
+font.family : sans-serif
+font.size   : 10
+text.color  : white
+
+# Backgrounds
+figure.facecolor : "#000000"
+axes.facecolor   : "#000000"
+
+# Saving
+savefig.facecolor  : "#000000"
+savefig.bbox       : tight
+savefig.pad_inches : 0.05

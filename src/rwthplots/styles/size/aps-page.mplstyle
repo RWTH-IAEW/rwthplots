@@ -1,0 +1,3 @@
+# APS Physical Review, full page (6.75 in)
+# 487.82 pt / 72.27 = 6.750 in
+figure.figsize : 6.750, 4.171

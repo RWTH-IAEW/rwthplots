@@ -1,0 +1,3 @@
+# US Letter paper, 6.5 in text width (1 in margins each side)
+# 469.76 pt / 72.27 = 6.500 in
+figure.figsize : 6.500, 4.017

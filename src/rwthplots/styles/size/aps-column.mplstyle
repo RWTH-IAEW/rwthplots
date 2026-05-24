@@ -1,0 +1,3 @@
+# APS Physical Review, single column (3.375 in)
+# 243.91 pt / 72.27 = 3.375 in
+figure.figsize : 3.375, 2.086

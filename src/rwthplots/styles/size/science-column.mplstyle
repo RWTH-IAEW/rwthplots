@@ -1,0 +1,3 @@
+# Science magazine, single column (57 mm)
+# 162.09 pt / 72.27 = 2.243 in
+figure.figsize : 2.243, 1.386

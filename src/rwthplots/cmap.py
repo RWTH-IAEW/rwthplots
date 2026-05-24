@@ -6,7 +6,7 @@ Definition of RWTH colour schemes for lines and maps.
 
 # Change default colorset (for lines) and colormap (for maps).
 plt.rc('axes', prop_cycle=plt.cycler('color', list(rwth_cset('rwth_100'))))
-matplotlib.colormaps.register((rwth_cmap('standard_RWTH_discrete'))
+matplotlib.colormaps.register(rwth_cmap('standard_RWTH_discrete'))
 plt.rc('image', cmap='standard_RWTH_discrete')
 
 all credits go out to Paul Tol //personal.sron.nl/~pault/
@@ -16,8 +16,22 @@ Institut für Elektrische Anlagen und Netze, Digitalisierung und Energiewirtscha
 """
 
 import copy
+import warnings
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap, to_rgba_array
+
+__all__ = ["RWTHcmaps", "rwth_cmap", "rwth_cset", "plot_color_palette", "discretemap"]
+
+
+def _hex_to_rgb(h):
+    """Convert a hex color string to an (R, G, B) integer tuple (0–255)."""
+    h = h.lstrip('#')
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+
+
+def _hex_to_nrgb(h):
+    """Convert a hex color string to a normalized (R, G, B) float tuple (0–1)."""
+    return tuple(v / 255.0 for v in _hex_to_rgb(h))
 
 
 def discretemap(colormap, hexclrs):
@@ -50,7 +64,7 @@ class RWTHcmaps(object):
             'magenta_RWTH_discrete', 'magenta_RWTH',
             'yellow_RWTH_discrete', 'yellow_RWTH',
             'petrol_RWTH_discrete', 'petrol_RWTH',
-            'turquoise_RWTH_discrete', 'turqoise_RWTH',
+            'turquoise_RWTH_discrete', 'turquoise_RWTH',
             'green_RWTH_discrete', 'green_RWTH',
             'maygreen_RWTH_discrete', 'maygreen_RWTH',
             'orange_RWTH_discrete', 'orange_RWTH',
@@ -61,7 +75,16 @@ class RWTHcmaps(object):
             'continuous_RWTH_discrete',
             'rolling_RWTH_discrete',
             'extended_RWTH_discrete',
-            'divergent_RWTH')
+            'divergent_RWTH',
+            'viridis_RWTH',
+            'heat_RWTH',
+            'thermal_RWTH',
+            'divergent_bm_RWTH',
+            'divergent_gy_RWTH',
+            'voltage_RWTH',
+            'loading_RWTH',
+            'renewable_RWTH',
+            'frequency_RWTH')
 
         self.funcdict = dict(
             zip(self.namelist,
@@ -80,7 +103,12 @@ class RWTHcmaps(object):
                  self.violet_RWTH_discrete, self.violet_RWTH,
                  self.purple_RWTH_discrete, self.purple_RWTH,
                  self.continuous_RWTH_discrete, self.rolling_RWTH_discrete,
-                 self.extended_RWTH_discrete, self.divergent_RWTH)))
+                 self.extended_RWTH_discrete, self.divergent_RWTH,
+                 self.viridis_RWTH,
+                 self.heat_RWTH, self.thermal_RWTH,
+                 self.divergent_bm_RWTH, self.divergent_gy_RWTH,
+                 self.voltage_RWTH, self.loading_RWTH,
+                 self.renewable_RWTH, self.frequency_RWTH)))
 
     def standard_RWTH_discrete(self):
         """
@@ -248,7 +276,7 @@ class RWTHcmaps(object):
 
     def red_RWTH_discrete(self):
         """
-        Define colormap 'orange_RWTH_discrete'.
+        Define colormap 'red_RWTH_discrete'.
         """
         clrs = ['#CC071E', '#D85C41', '#E69679', '#F3CDBB', '#FAEBE3']
         self.cmap = discretemap(self.cname, clrs)
@@ -256,7 +284,7 @@ class RWTHcmaps(object):
 
     def red_RWTH(self):
         """
-        Define colormap 'orange_RWTH'.
+        Define colormap 'red_RWTH'.
         """
         clrs = ['#CC071E', '#D85C41', '#E69679', '#F3CDBB', '#FAEBE3']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
@@ -337,7 +365,7 @@ class RWTHcmaps(object):
             for i in range(5):
                 indexes.append(copy.deepcopy(indexes[-1]))
                 indexes[-1].append(i * 13 + (j + 1))
-        if lut == None or lut < 1 or lut > (13 * 5):
+        if lut is None or lut < 1 or lut > (13 * 5):
             lut = 23
         self.cmap = discretemap(self.cname, [clrs[i] for i in indexes[lut - 1]])
         if lut == 23:
@@ -395,7 +423,7 @@ class RWTHcmaps(object):
             for i in range(13):
                 indexes.append(copy.deepcopy(indexes[-1]))
                 indexes[-1].insert((i * 2 + 1 + j), (j * 13 + i + 13))
-        if lut == None or lut < 1 or lut > (13 * 5):
+        if lut is None or lut < 1 or lut > (13 * 5):
             lut = 23
         self.cmap = discretemap(self.cname, [clrs[i] for i in indexes[lut - 1]])
         if lut == 23:
@@ -417,6 +445,157 @@ class RWTHcmaps(object):
         self.cmap = LinearSegmentedColormap.from_list(self.cname, divergent_rwth_colors)
         self.cmap.set_bad('#FFFFFF')
 
+    def viridis_RWTH(self):
+        """
+        Define colormap 'viridis_RWTH' — RWTH-branded perceptual gradient.
+
+        Colour stops: Violet (0%) → Turquoise (25%) → May Green (75%) → Yellow (100%).
+        Inspired by RWTH-Colors (https://github.com/ifs-rwth-aachen/RWTH-Colors,
+        MIT license, Philipp Simon Leibner at IFS RWTH Aachen).
+        """
+        clrs = [
+            (0.00, '#612158'),  # violet 100 %
+            (0.25, '#0098A1'),  # turquoise 100 %
+            (0.75, '#BDCD00'),  # maygreen 100 %
+            (1.00, '#FFED00'),  # yellow 100 %
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#FFFFFF')
+
+    def heat_RWTH(self):
+        """
+        Define colormap 'heat_RWTH' — sequential warm gradient (blue → orange → yellow).
+        Useful for density/heatmap data with a single-ended scale.
+        """
+        clrs = [
+            (0.00, '#00549F'),  # blue 100 %
+            (0.40, '#F6A800'),  # orange 100 %
+            (0.75, '#FFED00'),  # yellow 100 %
+            (1.00, '#FFFFFF'),  # white
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    def thermal_RWTH(self):
+        """
+        Define colormap 'thermal_RWTH' — sequential cold-to-hot (petrol → maygreen → yellow).
+        Inspired by thermal / temperature visualisation conventions.
+        """
+        clrs = [
+            (0.00, '#006165'),  # petrol 100 %
+            (0.33, '#0098A1'),  # turquoise 100 %
+            (0.66, '#57AB27'),  # green 100 %
+            (1.00, '#FFED00'),  # yellow 100 %
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    def divergent_bm_RWTH(self):
+        """
+        Define colormap 'divergent_bm_RWTH' — blue–white–magenta diverging map.
+        Useful for signed data (e.g. residuals, anomalies) where zero is meaningful.
+        """
+        clrs = [
+            (0.00, '#00549F'),  # blue 100 %
+            (0.25, '#8EBAE5'),  # blue 50 %
+            (0.50, '#FFFFFF'),  # white (zero)
+            (0.75, '#F19EB1'),  # magenta 50 %
+            (1.00, '#E30066'),  # magenta 100 %
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    def divergent_gy_RWTH(self):
+        """
+        Define colormap 'divergent_gy_RWTH' — green–white–yellow diverging map.
+        Alternative diverging palette using RWTH secondary colours.
+        """
+        clrs = [
+            (0.00, '#57AB27'),  # green 100 %
+            (0.25, '#B8D698'),  # green 50 %
+            (0.50, '#FFFFFF'),  # white (zero)
+            (0.75, '#FFF59B'),  # yellow 50 %
+            (1.00, '#FFED00'),  # yellow 100 %
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    # ------------------------------------------------------------------
+    # Power-system colormaps
+    # ------------------------------------------------------------------
+
+    def voltage_RWTH(self):
+        """
+        Define colormap 'voltage_RWTH' — symmetric map for voltage deviations.
+
+        Colour scheme: red → orange → green (nominal) → orange → red.
+        Use with a diverging norm centred at the nominal voltage (e.g. 1.0 pu).
+        Values at the centre (0.5) map to RWTH green (nominal / good),
+        values at the extremes map to RWTH red (over- or under-voltage).
+        """
+        clrs = [
+            (0.00, '#CC071E'),  # red       — extreme under-voltage
+            (0.25, '#F6A800'),  # orange
+            (0.50, '#57AB27'),  # green     — nominal
+            (0.75, '#F6A800'),  # orange
+            (1.00, '#CC071E'),  # red       — extreme over-voltage
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    def loading_RWTH(self):
+        """
+        Define colormap 'loading_RWTH' — single-ended loading / congestion map.
+
+        Colour scheme: green (0 % loading) → yellow → orange → red → bordeaux
+        (≥ 100 %, overloaded).  Use for line or transformer loading indicators.
+        """
+        clrs = [
+            (0.00, '#57AB27'),  # green     — unloaded
+            (0.40, '#BDCD00'),  # may green
+            (0.60, '#FFED00'),  # yellow
+            (0.80, '#F6A800'),  # orange
+            (0.90, '#CC071E'),  # red       — at limit
+            (1.00, '#A11035'),  # bordeaux  — overloaded
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    def renewable_RWTH(self):
+        """
+        Define colormap 'renewable_RWTH' — renewable energy fraction.
+
+        Colour scheme: black (0 % renewable) → orange → yellow → may green →
+        green (100 % renewable).  Useful for generation mix visualisations.
+        """
+        clrs = [
+            (0.00, '#000000'),  # black     — fully fossil
+            (0.25, '#F6A800'),  # orange
+            (0.50, '#FFED00'),  # yellow
+            (0.75, '#BDCD00'),  # may green
+            (1.00, '#57AB27'),  # green     — fully renewable
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
+    def frequency_RWTH(self):
+        """
+        Define colormap 'frequency_RWTH' — frequency deviation map.
+
+        Colour scheme: blue (under-frequency) → turquoise → green (nominal,
+        centre) → orange → red (over-frequency).  Use with a diverging norm
+        centred at 0 Hz deviation (or 50 / 60 Hz absolute).
+        """
+        clrs = [
+            (0.00, '#00549F'),  # blue      — under-frequency
+            (0.25, '#0098A1'),  # turquoise
+            (0.50, '#57AB27'),  # green     — nominal frequency
+            (0.75, '#F6A800'),  # orange
+            (1.00, '#CC071E'),  # red       — over-frequency
+        ]
+        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
+        self.cmap.set_bad('#CCCCCC')
+
     def show(self):
         """
         List names of defined colormaps.
@@ -428,8 +607,8 @@ class RWTHcmaps(object):
         Return requested colormap, default is 'extended_RWTH_discrete'.
         """
         self.cname = cname
-        if cname == 'extended_RWTH_discrete':
-            self.extended_RWTH_discrete(lut)
+        if cname in ('extended_RWTH_discrete', 'continuous_RWTH_discrete'):
+            self.funcdict[cname](lut)
         else:
             self.funcdict[cname]()
         return self.cmap
@@ -443,71 +622,143 @@ def rwth_cmap(colormap=None, lut=None):
     Parameter lut is ignored for all colormaps except 'standard_RWTH_discrete'.
     """
     obj = RWTHcmaps()
-    if colormap == None:
+    if colormap is None:
         return obj.namelist
     if colormap not in obj.namelist:
         colormap = 'standard_RWTH_discrete'
-        print('*** Warning: requested colormap not defined,',
-              'known colormaps are {}.'.format(obj.namelist),
-              'Using {}.'.format(colormap))
+        warnings.warn(
+            f"Requested colormap not defined; known colormaps are {obj.namelist}. "
+            f"Falling back to {colormap!r}.",
+            stacklevel=2,
+        )
     return obj.get(colormap, lut)
 
 
-def rwth_cset(colorset=None):
+def rwth_cset(colorset=None, frmt='HEX'):
     """
     Discrete color sets for qualitative data.
 
-    Define a namedtuple instance with the colors.
-    Examples for: cset = rwth_cset(<scheme>)
-      - cset.red and cset[1] give the same color (in default 'bright' colorset)
-      - cset._fields gives a tuple with all color names
-      - list(cset) gives a list with all colors
+    Returns a namedtuple whose fields are the 13 RWTH color names.
+
+    Parameters
+    ----------
+    colorset : str or None
+        One of 'rwth_100', 'rwth_75', 'rwth_50', 'rwth_25', 'rwth_10'.
+        Pass None to get a tuple of all available names.
+    frmt : {'HEX', 'RGB', 'NRGB'}
+        Output format.  'HEX' (default) returns '#RRGGBB' strings;
+        'RGB' returns (R, G, B) integer tuples (0–255);
+        'NRGB' returns (R, G, B) float tuples (0.0–1.0).
+
+    Examples
+    --------
+    cset = rwth_cset('rwth_100')
+    cset.blue            # '#00549F'
+    cset = rwth_cset('rwth_100', frmt='RGB')
+    cset.blue            # (0, 84, 159)
+    cset = rwth_cset('rwth_100', frmt='NRGB')
+    cset.blue            # (0.0, 0.329..., 0.623...)
     """
     from collections import namedtuple
 
     namelist = ('rwth_100', 'rwth_75', 'rwth_50', 'rwth_25', 'rwth_10')
-    if colorset == None:
+    if colorset is None:
         return namelist
     if colorset not in namelist:
         colorset = 'rwth_100'
-        print('*** Warning: requested colorset not defined,',
-              'known colorsets are {}.'.format(namelist),
-              'Using {}.'.format(colorset))
+        warnings.warn(
+            f"Requested colorset not defined; known colorsets are {namelist}. "
+            f"Falling back to {colorset!r}.",
+            stacklevel=2,
+        )
+    if frmt not in ('HEX', 'RGB', 'NRGB'):
+        raise ValueError(f"Unknown format {frmt!r}. Use 'HEX', 'RGB', or 'NRGB'.")
 
     if colorset == 'rwth_100':
-        cset = namedtuple('Bcset',
+        cset = namedtuple('RWTHColorset',
                           'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
-        return cset('#00549F', '#000000', '#E30066', '#FFED00', '#006165',
+        cset = cset('#00549F', '#000000', '#E30066', '#FFED00', '#006165',
                     '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E',
                     '#A11035', '#612158', '#7A6FAC')
 
-    if colorset == 'rwth_75':
-        cset = namedtuple('Hcset',
+    elif colorset == 'rwth_75':
+        cset = namedtuple('RWTHColorset',
                           'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
-        return cset('#407FB7', '#646567', '#E96088', '#FFF055', '#2D7F83',
+        cset = cset('#407FB7', '#646567', '#E96088', '#FFF055', '#2D7F83',
                     '#00B1B7', '#8DC060', '#D0D95C', '#FABE50', '#D85C41',
                     '#B65256', '#834E75', '#9B91C1')
 
-    if colorset == 'rwth_50':
-        cset = namedtuple('Vcset',
+    elif colorset == 'rwth_50':
+        cset = namedtuple('RWTHColorset',
                           'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
-        return cset('#8EBAE5', '#9C9E9F', '#F19EB1', '#FFF59B', '#7DA4A7',
+        cset = cset('#8EBAE5', '#9C9E9F', '#F19EB1', '#FFF59B', '#7DA4A7',
                     '#89CCCF', '#B8D698', '#E0E69A', '#FDD48F', '#E69679',
                     '#CD8B87', '#A8859E', '#BCB5D7')
 
-    if colorset == 'rwth_25':
-        cset = namedtuple('Mcset',
+    elif colorset == 'rwth_25':
+        cset = namedtuple('RWTHColorset',
                           'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
-        return cset('#C7DDF2', '#CFD1D2', '#F9D2DA', '#FFFAD1', '#BFD0D1',
+        cset = cset('#C7DDF2', '#CFD1D2', '#F9D2DA', '#FFFAD1', '#BFD0D1',
                     '#CAE7E7', '#DDEBCE', '#F0F3D0', '#FEEAC9', '#F3CDBB',
                     '#E5C5C0', '#D2C0CD', '#DEDAEB')
 
-    if colorset == 'rwth_10':
-        cset = namedtuple('Mcset',
+    elif colorset == 'rwth_10':
+        cset = namedtuple('RWTHColorset',
                           'blue black magenta yellow petrol turquoise green maygreen orange red bordeaux violet purple')
-        return cset('#E8F1FA', '#ECEDED', '#FDEEF0', '#FFFDEE', '#E6ECEC',
+        cset = cset('#E8F1FA', '#ECEDED', '#FDEEF0', '#FFFDEE', '#E6ECEC',
                     '#EBF6F6', '#F2F7EC', '#F9FAED', '#FFF7EA', '#FAEBE3',
                     '#F5E8E5', '#EDE5EA', '#F2F0F7')
+
+    if frmt == 'RGB':
+        cset = cset._make(_hex_to_rgb(c) for c in cset)
+    elif frmt == 'NRGB':
+        cset = cset._make(_hex_to_nrgb(c) for c in cset)
+    return cset
+
+
+def plot_color_palette():
+    """
+    Display all 13 RWTH base colors across their five tint levels (100 %–10 %)
+    as a matplotlib figure.
+
+    Returns the :class:`matplotlib.figure.Figure` so the caller can save or show it.
+
+    Inspired by ``ColorManager.plot_color_palette()`` in RWTH-Colors
+    (https://github.com/ifs-rwth-aachen/RWTH-Colors, MIT license,
+    Philipp Simon Leibner at IFS RWTH Aachen).
+    """
+    from matplotlib import pyplot as plt
+
+    tints = ('rwth_100', 'rwth_75', 'rwth_50', 'rwth_25', 'rwth_10')
+    tint_labels = ('100 %', '75 %', '50 %', '25 %', '10 %')
+    color_names = rwth_cset('rwth_100')._fields  # 13 names
+
+    n_colors = len(color_names)
+    n_tints = len(tints)
+
+    fig, axes = plt.subplots(n_tints, n_colors, figsize=(n_colors * 1.3, n_tints * 1.1))
+    fig.subplots_adjust(hspace=0.04, wspace=0.04)
+
+    for row, (tint, label) in enumerate(zip(tints, tint_labels)):
+        cset = rwth_cset(tint)
+        for col, (name, color) in enumerate(zip(color_names, cset)):
+            ax = axes[row, col]
+            ax.set_facecolor(color)
+            ax.set_xticks([])
+            ax.set_yticks([])
+            for spine in ax.spines.values():
+                spine.set_visible(False)
+            r, g, b = _hex_to_rgb(color)
+            text_color = '#000000' if (0.299 * r + 0.587 * g + 0.114 * b) > 128 else '#FFFFFF'
+            ax.text(0.5, 0.5, color, ha='center', va='center',
+                    fontsize=5.5, color=text_color, transform=ax.transAxes)
+            if row == 0:
+                ax.set_title(name, fontsize=7.5, pad=3)
+            if col == 0:
+                ax.set_ylabel(label, fontsize=7.5, rotation=0, labelpad=28, va='center')
+
+    fig.suptitle('RWTH Aachen University Colour Palette', fontsize=9, y=1.01)
+    return fig
 
 
 def main():

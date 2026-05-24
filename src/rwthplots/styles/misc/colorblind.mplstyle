@@ -1,0 +1,14 @@
+# --- RWTH Colorblind-safe colour cycle ----------------------------------------
+# A 6-colour RWTH subset chosen for legibility under the three common types of
+# colour vision deficiency (deuteranopia, protanopia, tritanopia).
+#
+# Selection criterion: maximise luminance spread (L* = 0, 19, 34, 51, 72, 94)
+# so that value contrast acts as a secondary distinguishing cue when hue is
+# ambiguous under CVD simulation.
+# Colors: black, violet, blue, purple, orange, yellow
+#
+# Pair with any base style, e.g.:
+#   plt.style.use(['rwthplots.styles.rwth-latex',
+#                  'rwthplots.styles.misc.colorblind'])
+
+axes.prop_cycle : cycler(color=["#00549F", "#F6A800", "#000000", "#FFED00", "#612158", "#7A6FAC"])

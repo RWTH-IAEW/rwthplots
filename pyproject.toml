@@ -1,21 +1,20 @@
 [project]
 name = "rwthplots"
-version = "3.0.4"
+version = "3.1.0"
 description = "Adding standard themes with RWTH Aachen University colours to matplotlib"
 readme = "README.md"
 authors = [
   { name = "Steffen Kortmann", email = "s.kortmann@iaew.rwth-aachen.de" },
   { name = "Florian Schmidtke", email = "f.schmidtke@iaew.rwth-aachen.de" },
 ]
-# ⚠️ Matplotlib 3.9 generally needs Python ≥3.10. Choose one:
-# requires-python = ">=3.10"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
-  # If you keep Python 3.9, consider pinning to <3.9
-  # "matplotlib>=3.8,<3.9",
-  "matplotlib>=3.9.4",
-  "rwth-cd-colors>=0.1.1",
+  "matplotlib>=3.10.9",
+  "numpy>=1.21",
 ]
+
+[project.optional-dependencies]
+examples = ["rwth-cd-colors>=0.1.1"]
 
 [dependency-groups]
 dev = [
@@ -35,8 +34,21 @@ include = ["rwthplots*"]
 [tool.setuptools.package-dir]
 "" = "src"
 
+[project.entry-points."matplotlib.style"]
+"rwthplots.styles"          = "rwthplots.styles"
+"rwthplots.styles.color"    = "rwthplots.styles.color"
+"rwthplots.styles.misc"     = "rwthplots.styles.misc"
+"rwthplots.styles.journals" = "rwthplots.styles.journals"
+"rwthplots.styles.size"     = "rwthplots.styles.size"
+
 [tool.setuptools.package-data]
-rwthplots = ["styles/*.mplstyle"]
+rwthplots = [
+    "styles/*.mplstyle",
+    "styles/color/*.mplstyle",
+    "styles/misc/*.mplstyle",
+    "styles/journals/*.mplstyle",
+    "styles/size/*.mplstyle",
+]
 
 
 # (optional) exclude heavy/irrelevant content from the wheel

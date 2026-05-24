@@ -11,7 +11,7 @@ figure.facecolor: none  # Background color
 axes.axisbelow: True  # Draw gridlines and ticks below patches (e.g., bars, lines)
 axes.facecolor: none  # Axes background color
 axes.linewidth : 0.5  # Edge line width
-axes.prop_cycle : cycler('color', ['00549F', '000000', 'E30066', 'FFED00', '006165', '0098A1', '57AB27', 'BDCD00', 'F6A800', 'CC071E', 'A11035', '612158', '7A6FAC'])  # Color cycle
+axes.prop_cycle : cycler(color=['#00549F', '#000000', '#E30066', '#FFED00', '#006165', '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E', '#A11035', '#612158', '#7A6FAC'])  # Color cycle
 axes.labelsize: 16  # Font size for the x and y labels
 axes.titlesize: 16  # Font size for the title
 

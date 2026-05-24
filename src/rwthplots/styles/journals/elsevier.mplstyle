@@ -1,0 +1,26 @@
+# --- Elsevier journal style ---------------------------------------------------
+# Suitable for Elsevier / ScienceDirect single-column figures (90 mm = 3.54 in).
+# Reference: https://www.elsevier.com/researcher/author/policies-and-guidelines/artwork-and-media-instructions
+
+# Figure geometry: 90 mm single column, golden-ratio height
+figure.figsize : 3.543, 2.190
+figure.dpi     : 600
+
+# Typography
+font.family     : serif
+font.size       : 9
+axes.labelsize  : 9
+xtick.labelsize : 8
+ytick.labelsize : 8
+legend.fontsize : 8
+axes.titlesize  : 9
+
+# Lines
+lines.linewidth  : 1.0
+axes.linewidth   : 0.5
+grid.linewidth   : 0.5
+lines.markersize : 3
+
+# Saving
+savefig.bbox       : tight
+savefig.pad_inches : 0.01

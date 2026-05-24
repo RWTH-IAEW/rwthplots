@@ -1,0 +1,3 @@
+# Elsevier, single column (90 mm)
+# 255.87 pt / 72.27 = 3.541 in
+figure.figsize : 3.541, 2.188

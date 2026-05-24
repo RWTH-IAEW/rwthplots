@@ -1,0 +1,30 @@
+# --- APS Physical Review style ------------------------------------------------
+# Suitable for APS journals (Physical Review Letters, Physical Review B, etc.).
+# Single column: 3.375 in; double column: 6.75 in.
+# Reference: https://journals.aps.org/authors/preparing-images-for-submission
+
+# Figure geometry: 3.375 in single column, golden-ratio height
+figure.figsize : 3.375, 2.086
+figure.dpi     : 600
+
+# Typography — APS uses Computer Modern / Times in the article body
+font.family     : serif
+font.size       : 10
+axes.labelsize  : 10
+xtick.labelsize : 9
+ytick.labelsize : 9
+legend.fontsize : 9
+axes.titlesize  : 10
+
+# Lines — APS figures are minimal
+lines.linewidth  : 1.0
+axes.linewidth   : 0.8
+grid.linewidth   : 0.5
+lines.markersize : 4
+
+# No grid by default (APS convention)
+axes.grid : False
+
+# Saving
+savefig.bbox       : tight
+savefig.pad_inches : 0.01

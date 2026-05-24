@@ -1,0 +1,3 @@
+# A4 paper, 170 mm text width (standard European margins)
+# 483.69 pt / 72.27 = 6.693 in
+figure.figsize : 6.693, 4.136

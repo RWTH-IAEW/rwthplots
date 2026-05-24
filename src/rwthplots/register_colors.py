@@ -11,7 +11,7 @@ Digitalization and Energy Economics (IAEW), RWTH Aachen University,
 
 import logging
 
-from rwthplots.cmap import RWTHcmaps
+from .cmap import RWTHcmaps
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
@@ -29,7 +29,7 @@ def register_rwth_colormaps():
             # Generate the colormap by calling the respective method
             rwth_cmaps.funcdict[cmap_name]()
             # Register the generated colormap with Matplotlib
-            mpl.colormaps.register(name=cmap_name, cmap=rwth_cmaps.cmap)
+            mpl.colormaps.register(name=cmap_name, cmap=rwth_cmaps.cmap, force=True)
             logging.info(f"Registered RWTH colormap: {cmap_name}")
 
 def plot_cmap():
