@@ -132,7 +132,7 @@ Composable on top of any base style:
 
 ## Colormaps
 
-37 colormaps registered on import.  Key maps:
+41 colormaps registered on import.  Key maps:
 
 | Name | Type | Description |
 |---|---|---|
@@ -145,6 +145,10 @@ Composable on top of any base style:
 | `heat_RWTH` | sequential | Blue → orange → white |
 | `thermal_RWTH` | sequential | Petrol → turquoise → green → yellow |
 | `blue_RWTH` | sequential | Blue tint gradient |
+| `voltage_RWTH` | diverging | Red → orange → green → orange → red (symmetric voltage deviation) |
+| `loading_RWTH` | sequential | Blue → green → yellow → orange → red → bordeaux (line/transformer loading) |
+| `renewable_RWTH` | sequential | Black → orange → yellow → green (renewable fraction) |
+| `frequency_RWTH` | diverging | Blue → green (nominal) → red (frequency deviation) |
 | *(+ 13 single-colour gradients)* | | One per RWTH base colour |
 
 ## Development

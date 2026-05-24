@@ -29,7 +29,7 @@ with context("rwth-word"):
 
     specs = [
         ("voltage_RWTH",   "Voltage deviation  (red ← nominal → red)"),
-        ("loading_RWTH",   "Line loading  (green → yellow → orange → red)"),
+        ("loading_RWTH",   "Line loading  (blue → green → yellow → orange → red)"),
         ("renewable_RWTH", "Renewable fraction  (black → orange → green)"),
         ("frequency_RWTH", "Frequency deviation  (blue ← nominal → red)"),
     ]
