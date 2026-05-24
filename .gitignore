@@ -6,3 +6,8 @@ RWTHPlots/styles/template.mplstyle
 build
 venv
 .coverage
+.DS_Store
+__pycache__/
+*.pyc
+dist/
+.pytest_cache/
