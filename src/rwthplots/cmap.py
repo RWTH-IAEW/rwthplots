@@ -547,14 +547,15 @@ class RWTHcmaps(object):
         """
         Define colormap 'loading_RWTH' — single-ended loading / congestion map.
 
-        Colour scheme: green (0 % loading) → yellow → orange → red → bordeaux
-        (≥ 100 %, overloaded).  Use for line or transformer loading indicators.
+        Colour scheme: blue (0 % loading) → green → yellow → orange → red →
+        bordeaux (≥ 100 %, overloaded).  Use for line or transformer loading
+        indicators.
         """
         clrs = [
-            (0.00, '#57AB27'),  # green     — unloaded
-            (0.40, '#BDCD00'),  # may green
-            (0.60, '#FFED00'),  # yellow
-            (0.80, '#F6A800'),  # orange
+            (0.00, '#00549F'),  # blue      — unloaded / cold
+            (0.30, '#57AB27'),  # green
+            (0.55, '#FFED00'),  # yellow
+            (0.75, '#F6A800'),  # orange
             (0.90, '#CC071E'),  # red       — at limit
             (1.00, '#A11035'),  # bordeaux  — overloaded
         ]

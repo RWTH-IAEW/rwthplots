@@ -266,7 +266,7 @@ text.latex.preamble: \usepackage{amsmath} \usepackage{amssymb}  # IMPROPER USE O
 
 ## The following settings allow you to select the fonts in math mode.
 mathtext.fontset: dejavuserif  # Should be 'dejavusans' (default),
-                               # 'dejavuserif', 'cm' (Computer Modern), 'stix',
+                               # 'dejavuserif", "cm' (Computer Modern), 'stix',
                                # 'stixsans' or 'custom' (unsupported, may go
                                # away in the future)
 ## "mathtext.fontset: custom" is defined by the mathtext.bf, .cal, .it, ...
@@ -343,7 +343,7 @@ axes.spines.right:  True
 
 axes.unicode_minus: True  # use Unicode for the minus symbol rather than hyphen.  See
                            # https://en.wikipedia.org/wiki/Plus_and_minus_signs#Character_codes
-axes.prop_cycle: cycler(color=['#00549F', '#000000', '#E30066', '#FFED00', '#006165', '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E', '#A11035', '#612158', '#7A6FAC'])
+axes.prop_cycle: cycler(color=["#00549F", "#000000", "#E30066", "#FFED00", "#006165", "#0098A1", "#57AB27", "#BDCD00", "#F6A800", "#CC071E", "#A11035", "#612158", "#7A6FAC"])
                   # color cycle for plot lines as list of string color specs:
                   # single letter, long name, or web-style hex
                   # As opposed to all other parameters in this file, the color
@@ -390,7 +390,7 @@ date.autoformatter.microsecond: %M:%S.%f
 ## The reference date for Matplotlib's internal date representation
 ## See https://matplotlib.org/examples/ticks_and_spines/date_precision_and_epochs.py
 #date.epoch: 1970-01-01T00:00:00
-## 'auto', 'concise':
+## 'auto", "concise':
 date.converter:                  auto
 ## For auto converter whether to use interval_multiples:
 date.interval_multiples:         True
