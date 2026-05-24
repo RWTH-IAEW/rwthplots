@@ -5,6 +5,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [3.1.1] — 2026-05-24
+
+### Added
+- MkDocs Material documentation site with IAEW branding, full API reference,
+  style sheet and colormap guides, and example gallery.
+
+### Changed
+- `loading_RWTH` colormap starts from RWTH blue (unloaded) instead of green
+  for better contrast at low loading values.
+- Climate stripes example uses RWTH blue / red with opacity only (no
+  intermediate colours), matching the original Ed Hawkins design intent.
+
+### Fixed
+- Cycler syntax in 22 `.mplstyle` files changed from single-quoted to
+  double-quoted strings for Matplotlib 3.10 compatibility.
+- `MANIFEST.in` removed (redundant with `pyproject.toml` package-data).
+- `.DS_Store` removed from repository; added to `.gitignore`.
+
+---
+
 ## [3.1.0] — 2026-05-24
 
 ### Added
