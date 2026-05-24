@@ -6,7 +6,7 @@ repo_url: https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots
 repo_name: aev/RWTHPlots
 
 docs_dir: docs
-site_dir: site
+site_dir: public
 
 theme:
   name: material

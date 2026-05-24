@@ -26,16 +26,43 @@ Developed at the [Institute for High Voltage Equipment and Grids, Digitalization
 
 ---
 
+## Why rwthplots?
+
+Publishing figures in RWTH Aachen house style currently requires manually
+copy-pasting hex codes, setting rcParams by hand, and re-applying the same
+boilerplate in every script.  rwthplots solves this in one import:
+
+```python
+import rwthplots
+import matplotlib.pyplot as plt
+
+with rwthplots.context("rwth-latex", "color.blue", "size.ieee-column"):
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    rwthplots.save_figure(fig, "results/fig1", formats=["pdf", "png"])
+```
+
+- **One import** registers all 41 colormaps and all style sheets.
+- **Composable styles** — stack a base style with colour, size, and journal
+  modifiers without editing rcParams directly.
+- **Accessible by design** — `pick_colors()` selects maximally distinct colours
+  in CIELAB; `check_accessibility()` flags confusable pairs under three types
+  of colour vision deficiency.
+- **Power-system ready** — four dedicated colormaps for voltage, loading,
+  renewable fraction, and frequency visualisations.
+
+---
+
 ## Features at a glance
 
 | Feature | Description |
 |---|---|
 | **6 base styles** | LaTeX, Word, PowerPoint, dark, Beamer — drop-in `plt.style.use()` |
-| **Composable modifiers** | 16 colour cycles, 6 misc tweaks, 6 journal presets, 15 size modifiers |
+| **Composable modifiers** | 16 colour cycles · 6 misc tweaks · 6 journal presets · 15 size presets |
 | **41 colormaps** | Diverging, sequential, discrete, and power-system maps |
 | **Colour sets** | Named qualitative palettes in HEX / RGB / normalised RGB |
-| **Accessibility** | CVD simulation, delta-E reporting, `pick_colors()` greedy selection |
-| **Figure sizing** | `set_size()` with 15 journal/paper presets |
+| **Accessibility** | CVD simulation (Viénot-Brettel-Mollon), delta-E reporting, greedy `pick_colors()` |
+| **Figure sizing** | `set_size()` with 15 journal/paper presets, golden-ratio height |
 | **Multi-format export** | `save_figure()` writes PDF + PNG + SVG in one call |
 
 ---
@@ -46,4 +73,5 @@ Developed at the [Institute for High Voltage Equipment and Grids, Digitalization
 pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
 ```
 
-See [Installation](installation.md) for full options.
+See [Installation](installation.md) for full options and [Quick Start](quickstart.md) for
+a tour of all features.

@@ -48,13 +48,21 @@ def discretemap(colormap, hexclrs):
 
 
 class RWTHcmaps(object):
-    """
-    Class RWTHcmaps definition.
+    """Registry of all RWTH Aachen colormaps.
+
+    Each colormap is implemented as a method that sets ``self.cmap`` to a
+    :class:`~matplotlib.colors.LinearSegmentedColormap` or discrete variant.
+    The :func:`rwth_cmap` factory is the normal public entry point; instantiate
+    this class directly only if you need to iterate over ``namelist``.
+
+    Attributes:
+        namelist: Tuple of all registered colormap name strings.
+        funcdict: Mapping of name → bound method.
+        cmap: Set by each method after calling :meth:`get`.
+        cname: Set by :meth:`get` before calling the colormap method.
     """
 
     def __init__(self):
-        """
-        """
         self.cmap = None
         self.cname = None
         self.namelist = (
@@ -615,12 +623,31 @@ class RWTHcmaps(object):
         return self.cmap
 
 
-def rwth_cmap(colormap=None, lut=None):
-    """
-    Continuous and discrete color sets for ordered data.
-    
-    Return a matplotlib colormap.
-    Parameter lut is ignored for all colormaps except 'standard_RWTH_discrete'.
+def rwth_cmap(colormap: str | None = None, lut: int | None = None) -> "LinearSegmentedColormap | tuple":
+    """Return a Matplotlib colormap from the RWTH palette.
+
+    All 41 RWTH colormaps are registered automatically on ``import rwthplots``,
+    so they can also be accessed via ``plt.get_cmap('name')`` or
+    ``plt.set_cmap('name')``.  Use this factory when you need a
+    :class:`~matplotlib.colors.LinearSegmentedColormap` object directly, or
+    when you want to set a custom ``lut`` for the multi-level discrete maps.
+
+    Args:
+        colormap: Name of the colormap to return.  Call ``rwth_cmap()`` with no
+            arguments to get a tuple of all available names.  Falls back to
+            ``'standard_RWTH_discrete'`` with a warning if the name is unknown.
+        lut: Number of colours for ``extended_RWTH_discrete`` and
+            ``continuous_RWTH_discrete`` (1–65).  Ignored for all other maps.
+
+    Returns:
+        LinearSegmentedColormap | tuple[str, ...]: Colormap instance, or all
+            name strings as a tuple when called with no arguments.
+
+    Examples:
+        >>> from rwthplots.cmap import rwth_cmap
+        >>> cmap = rwth_cmap("divergent_RWTH")
+        >>> cmap = rwth_cmap("extended_RWTH_discrete", lut=8)
+        >>> all_names = rwth_cmap()   # returns the full namelist tuple
     """
     obj = RWTHcmaps()
     if colormap is None:
@@ -635,30 +662,47 @@ def rwth_cmap(colormap=None, lut=None):
     return obj.get(colormap, lut)
 
 
-def rwth_cset(colorset=None, frmt='HEX'):
-    """
-    Discrete color sets for qualitative data.
+def rwth_cset(colorset: str | None = None, frmt: str = 'HEX') -> "tuple":
+    """Return a named RWTH colour set for qualitative (categorical) data.
 
-    Returns a namedtuple whose fields are the 13 RWTH color names.
+    The RWTH corporate design defines 13 base colours, each available at five
+    tint levels (100 %, 75 %, 50 %, 25 %, 10 %).  This function returns the
+    chosen tint level as a :func:`~collections.namedtuple` with one attribute
+    per colour name, making the values easy to access by name
+    (``cset.blue``, ``cset.orange``, etc.) or to iterate over.
 
-    Parameters
-    ----------
-    colorset : str or None
-        One of 'rwth_100', 'rwth_75', 'rwth_50', 'rwth_25', 'rwth_10'.
-        Pass None to get a tuple of all available names.
-    frmt : {'HEX', 'RGB', 'NRGB'}
-        Output format.  'HEX' (default) returns '#RRGGBB' strings;
-        'RGB' returns (R, G, B) integer tuples (0–255);
-        'NRGB' returns (R, G, B) float tuples (0.0–1.0).
+    The 13 colours in order are:
+    ``blue``, ``black``, ``magenta``, ``yellow``, ``petrol``,
+    ``turquoise``, ``green``, ``maygreen``, ``orange``, ``red``,
+    ``bordeaux``, ``violet``, ``purple``.
 
-    Examples
-    --------
-    cset = rwth_cset('rwth_100')
-    cset.blue            # '#00549F'
-    cset = rwth_cset('rwth_100', frmt='RGB')
-    cset.blue            # (0, 84, 159)
-    cset = rwth_cset('rwth_100', frmt='NRGB')
-    cset.blue            # (0.0, 0.329..., 0.623...)
+    Args:
+        colorset: Tint level to return.  One of ``'rwth_100'``, ``'rwth_75'``,
+            ``'rwth_50'``, ``'rwth_25'``, ``'rwth_10'``.  Pass ``None`` to get
+            a tuple of all available names.  Falls back to ``'rwth_100'`` with
+            a warning if the name is unknown.
+        frmt: Output format for the colour values.
+
+            * ``'HEX'`` *(default)* — ``'#RRGGBB'`` strings
+            * ``'RGB'`` — ``(R, G, B)`` integer tuples (0–255)
+            * ``'NRGB'`` — ``(R, G, B)`` float tuples (0.0–1.0)
+
+    Returns:
+        RWTHColorset: Namedtuple with 13 named colour attributes, or a tuple
+            of available colorset names when called with ``colorset=None``.
+
+    Examples:
+        >>> from rwthplots.cmap import rwth_cset
+        >>> cset = rwth_cset("rwth_100")
+        >>> cset.blue
+        '#00549F'
+        >>> list(cset)          # all 13 colours as a list
+        ['#00549F', '#000000', ...]
+        >>> cset_rgb = rwth_cset("rwth_100", frmt="RGB")
+        >>> cset_rgb.blue
+        (0, 84, 159)
+        >>> cset_nrgb = rwth_cset("rwth_75", frmt="NRGB")
+        >>> cset_nrgb.orange    # (0.98..., 0.745..., 0.314...)
     """
     from collections import namedtuple
 

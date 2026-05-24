@@ -1,5 +1,6 @@
 stages:
   - testing
+  - docs
 
 variables:
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
@@ -47,3 +48,26 @@ pytest:
   parallel:
     matrix:
       - PY_VERSION: ["3.10", "3.11", "3.12", "3.13"]
+
+# ---------------------------------------------------------------------------
+# GitLab Pages — build and deploy MkDocs documentation
+# Runs only on the default branch; the 'public/' artifact is served at
+# https://<namespace>.gitlab.io/<project>/
+# ---------------------------------------------------------------------------
+pages:
+  stage: docs
+  image: "python:3.13"
+  tags:
+    - docker
+  variables:
+    PY_VERSION: "3.13"
+  before_script:
+    - *install_with_uv
+  script:
+    - uv run mkdocs build --strict
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
