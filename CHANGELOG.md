@@ -5,6 +5,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [3.2.1] — 2026-05-25
+
+### Changed
+- README and documentation index rewritten with PyPI/CI/docs badges, clearer
+  RWTH-internal audience framing, and "Why rwthplots?" motivating paragraph.
+- `pyproject.toml` updated: SPDX license string, `matplotlib>=3.7` minimum
+  (was incorrect `>=3.10.9`), full `[project.urls]` block, and PyPI classifiers.
+
+### Added
+- GitHub Actions workflows: `ci.yml` (pytest matrix 3.10–3.13), `docs.yml`
+  (MkDocs gh-deploy on push to main), `release.yml` (test matrix + PyPI
+  Trusted Publisher publish on version tag).
+
+---
+
 ## [3.2.0] — 2026-05-25
 
 ### Added
