@@ -934,7 +934,11 @@
 
 
 <h1 id="rwthplots">rwthplots<a class="headerlink" href="#rwthplots" title="Permanent link">&para;</a></h1>
-<p><strong>Matplotlib style sheets, colormaps, and colour utilities based on the RWTH Aachen University corporate design palette.</strong></p>
+<p><strong>Matplotlib style sheets, colormaps, and figure utilities for RWTH Aachen University's corporate design palette.</strong></p>
+<p><a href="https://pypi.org/project/rwthplots/"><img alt="PyPI" src="https://img.shields.io/pypi/v/rwthplots" /></a>
+<a href="https://pypi.org/project/rwthplots/"><img alt="Python" src="https://img.shields.io/pypi/pyversions/rwthplots" /></a>
+<a href="https://github.com/RWTH-IAEW/rwthplots/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/RWTH-IAEW/rwthplots/actions/workflows/ci.yml/badge.svg" /></a>
+<a href="https://github.com/RWTH-IAEW/rwthplots/blob/main/LICENSE.txt"><img alt="License" src="https://img.shields.io/badge/license-MIT-green" /></a></p>
 <p>Developed at the <a href="https://www.iaew.rwth-aachen.de">Institute for High Voltage Equipment and Grids, Digitalization and Energy Economics (IAEW)</a>, RWTH Aachen University.</p>
 <hr />
 <h2 id="gallery">Gallery<a class="headerlink" href="#gallery" title="Permanent link">&para;</a></h2>
@@ -944,13 +948,14 @@
 <p><img alt="Style demo" src="images/style_demo.png" /></p>
 <p><strong>Colormaps</strong> — key maps overview</p>
 <p><img alt="Colormaps" src="images/colormaps.png" /></p>
-<p><strong>Climate stripes</strong> — RWTH blue / red with opacity</p>
+<p><strong>Climate stripes</strong> — Nordrhein-Westfalen 1881–2025, real DWD data</p>
 <p><img alt="Climate stripes" src="images/climate_stripes.png" /></p>
 <hr />
 <h2 id="why-rwthplots">Why rwthplots?<a class="headerlink" href="#why-rwthplots" title="Permanent link">&para;</a></h2>
-<p>Publishing figures in RWTH Aachen house style currently requires manually
-copy-pasting hex codes, setting rcParams by hand, and re-applying the same
-boilerplate in every script.  rwthplots solves this in one import:</p>
+<p>Producing RWTH-compliant figures currently means manually copying hex codes from the
+<a href="https://www.rwth-aachen.de/go/id/obfa">RWTH corporate design guidelines</a>, setting rcParams
+by hand, and re-applying the same boilerplate in every script.
+<code>rwthplots</code> solves this in a single import:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rwthplots</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
