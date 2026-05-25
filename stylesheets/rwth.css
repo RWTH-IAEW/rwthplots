@@ -1,0 +1,46 @@
+/* RWTH Aachen University / IAEW corporate design overrides for MkDocs Material */
+
+:root {
+  --md-primary-fg-color:        #00549F;
+  --md-primary-fg-color--light: #407FB7;
+  --md-primary-fg-color--dark:  #003d73;
+  --md-accent-fg-color:         #CC071E;
+}
+
+/* Header logo sizing */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2rem;
+  width: auto;
+}
+
+/* Slightly tighten the nav sidebar */
+.md-nav__title {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* Admonition accent in RWTH blue */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: #00549F;
+}
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary {
+  background-color: rgba(0, 84, 159, 0.1);
+}
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before {
+  background-color: #00549F;
+}
+
+/* Code blocks: subtle RWTH-blue left border */
+.md-typeset pre > code {
+  border-left: 3px solid #00549F;
+}
+
+/* Table header in primary colour */
+.md-typeset table:not([class]) th {
+  background-color: #00549F;
+  color: #ffffff;
+}
