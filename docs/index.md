@@ -33,10 +33,13 @@ Developed at the [Institute for High Voltage Equipment and Grids, Digitalization
 
 ## Why rwthplots?
 
-Producing RWTH-compliant figures currently means manually copying hex codes from the
-[RWTH corporate design guidelines](https://www.rwth-aachen.de/go/id/obfa), setting rcParams
-by hand, and re-applying the same boilerplate in every script.
-`rwthplots` solves this in a single import:
+Producing consistent, publication-ready figures in Python typically means
+manually copying hex codes, tweaking rcParams for every new script, and
+re-exporting at different sizes for different journals.  `rwthplots` solves
+this in a single import, built around the
+[RWTH Aachen University corporate design palette](https://www.rwth-aachen.de/go/id/obfa) —
+a carefully curated set of 13 base colours across 5 tint levels, designed for
+contrast, legibility, and print reproduction.
 
 ```python
 import rwthplots
