@@ -1,6 +1,11 @@
 # rwthplots
 
-**Matplotlib style sheets, colormaps, and colour utilities based on the RWTH Aachen University corporate design palette.**
+**Matplotlib style sheets, colormaps, and figure utilities for RWTH Aachen University's corporate design palette.**
+
+[![PyPI](https://img.shields.io/pypi/v/rwthplots)](https://pypi.org/project/rwthplots/)
+[![Python](https://img.shields.io/pypi/pyversions/rwthplots)](https://pypi.org/project/rwthplots/)
+[![CI](https://github.com/RWTH-IAEW/rwthplots/actions/workflows/ci.yml/badge.svg)](https://github.com/RWTH-IAEW/rwthplots/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/RWTH-IAEW/rwthplots/blob/main/LICENSE.txt)
 
 Developed at the [Institute for High Voltage Equipment and Grids, Digitalization and Energy Economics (IAEW)](https://www.iaew.rwth-aachen.de), RWTH Aachen University.
 
@@ -20,7 +25,7 @@ Developed at the [Institute for High Voltage Equipment and Grids, Digitalization
 
 ![Colormaps](images/colormaps.png)
 
-**Climate stripes** — RWTH blue / red with opacity
+**Climate stripes** — Nordrhein-Westfalen 1881–2025, real DWD data
 
 ![Climate stripes](images/climate_stripes.png)
 
@@ -28,9 +33,10 @@ Developed at the [Institute for High Voltage Equipment and Grids, Digitalization
 
 ## Why rwthplots?
 
-Publishing figures in RWTH Aachen house style currently requires manually
-copy-pasting hex codes, setting rcParams by hand, and re-applying the same
-boilerplate in every script.  rwthplots solves this in one import:
+Producing RWTH-compliant figures currently means manually copying hex codes from the
+[RWTH corporate design guidelines](https://www.rwth-aachen.de/go/id/obfa), setting rcParams
+by hand, and re-applying the same boilerplate in every script.
+`rwthplots` solves this in a single import:
 
 ```python
 import rwthplots
