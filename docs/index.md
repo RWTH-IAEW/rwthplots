@@ -70,7 +70,7 @@ with rwthplots.context("rwth-latex", "color.blue", "size.ieee-column"):
 ## Quick install
 
 ```sh
-pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+pip install rwthplots
 ```
 
 See [Installation](installation.md) for full options and [Quick Start](quickstart.md) for

@@ -24,16 +24,21 @@ RWTH Aachen University corporate design palette.
 ## Installation
 
 ```sh
-# From GitLab (recommended)
-pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-
-# Clone and install in editable mode
-git clone https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-cd RWTHPlots
-uv pip install -e .
+pip install rwthplots
 ```
 
-Requires Python ≥ 3.10 and Matplotlib ≥ 3.10.
+Or install the latest development version directly from GitHub:
+
+```sh
+pip install git+https://github.com/RWTH-IAEW/rwthplots.git
+
+# Editable install for development
+git clone https://github.com/RWTH-IAEW/rwthplots.git
+cd rwthplots
+pip install -e .
+```
+
+Requires Python ≥ 3.10 and Matplotlib ≥ 3.7.
 
 ## Quick start
 

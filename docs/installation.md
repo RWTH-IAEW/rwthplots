@@ -1,19 +1,25 @@
 # Installation
 
-Requires **Python ≥ 3.10** and **Matplotlib ≥ 3.10**.
+Requires **Python ≥ 3.10** and **Matplotlib ≥ 3.7**.
 
-## From GitLab (recommended)
+## From PyPI (recommended)
 
 ```sh
-pip install git+https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
+pip install rwthplots
+```
+
+## From GitHub
+
+```sh
+pip install git+https://github.com/RWTH-IAEW/rwthplots.git
 ```
 
 ## Editable install for development
 
 ```sh
-git clone https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots.git
-cd RWTHPlots
-uv pip install -e .
+git clone https://github.com/RWTH-IAEW/rwthplots.git
+cd rwthplots
+pip install -e .
 ```
 
 ## With development dependencies

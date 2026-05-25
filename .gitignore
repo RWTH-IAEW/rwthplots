@@ -13,3 +13,8 @@ dist/
 .pytest_cache/
 site/
 public/
+# Secrets
+.env
+*.key
+*.pem
+*.secret

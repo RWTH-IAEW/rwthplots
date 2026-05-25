@@ -1,9 +1,9 @@
 site_name: rwthplots
 site_description: RWTH Aachen University colours and styles for Matplotlib
 site_author: Steffen Kortmann
-site_url: https://aev.gitlab.io/RWTHPlots/
-repo_url: https://gitlab.iaew.rwth-aachen.de/aev/RWTHPlots
-repo_name: aev/RWTHPlots
+site_url: https://rwth-iaew.github.io/rwthplots/
+repo_url: https://github.com/RWTH-IAEW/rwthplots
+repo_name: RWTH-IAEW/rwthplots
 
 docs_dir: docs
 site_dir: public
