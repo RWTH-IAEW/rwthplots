@@ -857,14 +857,29 @@
 <p>All notable changes to this project are documented here.
 Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>.</p>
 <hr />
-<h2 id="320-2026-05-25">[3.2.0] — 2026-05-25<a class="headerlink" href="#320-2026-05-25" title="Permanent link">&para;</a></h2>
+<h2 id="321-2026-05-25">[3.2.1] — 2026-05-25<a class="headerlink" href="#321-2026-05-25" title="Permanent link">&para;</a></h2>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>README and documentation index rewritten with PyPI/CI/docs badges, clearer
+  RWTH-internal audience framing, and "Why rwthplots?" motivating paragraph.</li>
+<li><code>pyproject.toml</code> updated: SPDX license string, <code>matplotlib&gt;=3.7</code> minimum
+  (was incorrect <code>&gt;=3.10.9</code>), full <code>[project.urls]</code> block, and PyPI classifiers.</li>
+</ul>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li>GitHub Actions workflows: <code>ci.yml</code> (pytest matrix 3.10–3.13), <code>docs.yml</code>
+  (MkDocs gh-deploy on push to main), <code>release.yml</code> (test matrix + PyPI
+  Trusted Publisher publish on version tag).</li>
+</ul>
+<hr />
+<h2 id="320-2026-05-25">[3.2.0] — 2026-05-25<a class="headerlink" href="#320-2026-05-25" title="Permanent link">&para;</a></h2>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>_r</code> reversed variants registered for all 38 colormaps at import time
   (e.g. <code>loading_RWTH_r</code>, <code>thermal_RWTH_r</code>), matching standard Matplotlib
   convention.</li>
 </ul>
-<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>loading_RWTH</code> redesigned: <strong>blue → white → yellow → red → bordeaux</strong>.
   Removed green and orange stops; a pale-blue bridge prevents the RGB
@@ -885,12 +900,12 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 </ul>
 <hr />
 <h2 id="311-2026-05-24">[3.1.1] — 2026-05-24<a class="headerlink" href="#311-2026-05-24" title="Permanent link">&para;</a></h2>
-<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>MkDocs Material documentation site with IAEW branding, full API reference,
   style sheet and colormap guides, and example gallery.</li>
 </ul>
-<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>loading_RWTH</code> colormap starts from RWTH blue (unloaded) instead of green
   for better contrast at low loading values.</li>
@@ -906,7 +921,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 </ul>
 <hr />
 <h2 id="310-2026-05-24">[3.1.0] — 2026-05-24<a class="headerlink" href="#310-2026-05-24" title="Permanent link">&para;</a></h2>
-<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">&para;</a></h3>
 <p><strong>Colormaps</strong> (13 new, total 41)
 - <code>viridis_RWTH</code> — violet → turquoise → may green → yellow perceptual gradient.
   Inspired by RWTH-Colors (Philipp Simon Leibner, IFS RWTH Aachen, MIT).
@@ -947,7 +962,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 - <code>climate_stripes.py</code> — warming-stripes with <code>divergent_RWTH</code>.
 - <code>new_features_demo.py</code> — walkthrough of all v3.1 features.
 - <code>power_systems_demo.py</code> — voltage map, loading bars, frequency time series.</p>
-<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">&para;</a></h3>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fallback warnings in <code>rwth_cmap()</code> and <code>rwth_cset()</code> now use
   <code>warnings.warn()</code> instead of <code>print()</code>.</li>
