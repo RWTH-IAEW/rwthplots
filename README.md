@@ -17,7 +17,7 @@ RWTH Aachen University corporate design palette.
 
 ![Colormaps](docs/images/colormaps.png)
 
-**Climate stripes** — `divergent_RWTH` colormap
+**Climate stripes** — Nordrhein-Westfalen 1881–2025, DWD area average, RWTH blue / red
 
 ![Climate stripes](docs/images/climate_stripes.png)
 
@@ -61,8 +61,7 @@ with rwthplots.context("rwth-latex", "color.blue", "misc.grid"):
 plt.set_cmap("extended_RWTH_discrete")        # registered automatically
 plt.set_cmap("divergent_RWTH")                # blue → red diverging
 plt.set_cmap("viridis_RWTH")                  # RWTH-branded perceptual gradient
-plt.set_cmap("heat_RWTH")                     # blue → orange → white sequential
-plt.set_cmap("thermal_RWTH")                  # petrol → yellow sequential
+plt.set_cmap("thermal_RWTH")                  # black → red → orange → yellow → white (blackbody)
 plt.set_cmap("divergent_bm_RWTH")             # blue–white–magenta diverging
 plt.set_cmap("divergent_gy_RWTH")             # green–white–yellow diverging
 
@@ -132,7 +131,7 @@ Composable on top of any base style:
 
 ## Colormaps
 
-41 colormaps registered on import.  Key maps:
+38 colormaps registered on import (plus `_r` reversed variants for all).  Key maps:
 
 | Name | Type | Description |
 |---|---|---|
@@ -142,14 +141,12 @@ Composable on top of any base style:
 | `divergent_bm_RWTH` | diverging | Blue – white – magenta |
 | `divergent_gy_RWTH` | diverging | Green – white – yellow |
 | `viridis_RWTH` | sequential | Violet → turquoise → may green → yellow |
-| `heat_RWTH` | sequential | Blue → orange → white |
-| `thermal_RWTH` | sequential | Petrol → turquoise → green → yellow |
+| `thermal_RWTH` | sequential | Black → bordeaux → red → orange → yellow → white (blackbody) |
 | `blue_RWTH` | sequential | Blue tint gradient |
 | `voltage_RWTH` | diverging | Red → orange → green → orange → red (symmetric voltage deviation) |
-| `loading_RWTH` | sequential | Blue → green → yellow → orange → red → bordeaux (line/transformer loading) |
-| `renewable_RWTH` | sequential | Black → orange → yellow → green (renewable fraction) |
-| `frequency_RWTH` | diverging | Blue → green (nominal) → red (frequency deviation) |
+| `loading_RWTH` | sequential | Blue → white → yellow → red → bordeaux (line/transformer loading) |
 | *(+ 13 single-colour gradients)* | | One per RWTH base colour |
+| *All maps available as `name_r`* | | Reversed variant registered automatically |
 
 ## Development
 

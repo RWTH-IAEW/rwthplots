@@ -85,14 +85,11 @@ class RWTHcmaps(object):
             'extended_RWTH_discrete',
             'divergent_RWTH',
             'viridis_RWTH',
-            'heat_RWTH',
             'thermal_RWTH',
             'divergent_bm_RWTH',
             'divergent_gy_RWTH',
             'voltage_RWTH',
-            'loading_RWTH',
-            'renewable_RWTH',
-            'frequency_RWTH')
+            'loading_RWTH')
 
         self.funcdict = dict(
             zip(self.namelist,
@@ -112,11 +109,9 @@ class RWTHcmaps(object):
                  self.purple_RWTH_discrete, self.purple_RWTH,
                  self.continuous_RWTH_discrete, self.rolling_RWTH_discrete,
                  self.extended_RWTH_discrete, self.divergent_RWTH,
-                 self.viridis_RWTH,
-                 self.heat_RWTH, self.thermal_RWTH,
+                 self.viridis_RWTH, self.thermal_RWTH,
                  self.divergent_bm_RWTH, self.divergent_gy_RWTH,
-                 self.voltage_RWTH, self.loading_RWTH,
-                 self.renewable_RWTH, self.frequency_RWTH)))
+                 self.voltage_RWTH, self.loading_RWTH)))
 
     def standard_RWTH_discrete(self):
         """
@@ -470,30 +465,21 @@ class RWTHcmaps(object):
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
         self.cmap.set_bad('#FFFFFF')
 
-    def heat_RWTH(self):
-        """
-        Define colormap 'heat_RWTH' — sequential warm gradient (blue → orange → yellow).
-        Useful for density/heatmap data with a single-ended scale.
-        """
-        clrs = [
-            (0.00, '#00549F'),  # blue 100 %
-            (0.40, '#F6A800'),  # orange 100 %
-            (0.75, '#FFED00'),  # yellow 100 %
-            (1.00, '#FFFFFF'),  # white
-        ]
-        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
-
     def thermal_RWTH(self):
         """
-        Define colormap 'thermal_RWTH' — sequential cold-to-hot (petrol → maygreen → yellow).
-        Inspired by thermal / temperature visualisation conventions.
+        Define colormap 'thermal_RWTH' — blackbody-style thermal map.
+
+        Colour scheme: black → bordeaux → red → orange → yellow → white.
+        Mimics Planck radiation / incandescence; suitable for temperature or
+        heat-flux visualisation.
         """
         clrs = [
-            (0.00, '#006165'),  # petrol 100 %
-            (0.33, '#0098A1'),  # turquoise 100 %
-            (0.66, '#57AB27'),  # green 100 %
-            (1.00, '#FFED00'),  # yellow 100 %
+            (0.00, '#000000'),  # black     — cold / zero
+            (0.20, '#A11035'),  # bordeaux  — dark red
+            (0.40, '#CC071E'),  # red
+            (0.60, '#F6A800'),  # orange
+            (0.80, '#FFED00'),  # yellow
+            (1.00, '#FFFFFF'),  # white     — hot / maximum
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
         self.cmap.set_bad('#CCCCCC')
@@ -555,52 +541,15 @@ class RWTHcmaps(object):
         """
         Define colormap 'loading_RWTH' — single-ended loading / congestion map.
 
-        Colour scheme: blue (0 % loading) → green → yellow → orange → red →
-        bordeaux (≥ 100 %, overloaded).  Use for line or transformer loading
-        indicators.
+        Colour scheme: blue (0 % loading) → yellow → red → bordeaux
+        (≥ 100 %, overloaded).  Use for line or transformer loading indicators.
         """
         clrs = [
-            (0.00, '#00549F'),  # blue      — unloaded / cold
-            (0.30, '#57AB27'),  # green
-            (0.55, '#FFED00'),  # yellow
-            (0.75, '#F6A800'),  # orange
-            (0.90, '#CC071E'),  # red       — at limit
-            (1.00, '#A11035'),  # bordeaux  — overloaded
-        ]
-        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
-
-    def renewable_RWTH(self):
-        """
-        Define colormap 'renewable_RWTH' — renewable energy fraction.
-
-        Colour scheme: black (0 % renewable) → orange → yellow → may green →
-        green (100 % renewable).  Useful for generation mix visualisations.
-        """
-        clrs = [
-            (0.00, '#000000'),  # black     — fully fossil
-            (0.25, '#F6A800'),  # orange
-            (0.50, '#FFED00'),  # yellow
-            (0.75, '#BDCD00'),  # may green
-            (1.00, '#57AB27'),  # green     — fully renewable
-        ]
-        self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
-
-    def frequency_RWTH(self):
-        """
-        Define colormap 'frequency_RWTH' — frequency deviation map.
-
-        Colour scheme: blue (under-frequency) → turquoise → green (nominal,
-        centre) → orange → red (over-frequency).  Use with a diverging norm
-        centred at 0 Hz deviation (or 50 / 60 Hz absolute).
-        """
-        clrs = [
-            (0.00, '#00549F'),  # blue      — under-frequency
-            (0.25, '#0098A1'),  # turquoise
-            (0.50, '#57AB27'),  # green     — nominal frequency
-            (0.75, '#F6A800'),  # orange
-            (1.00, '#CC071E'),  # red       — over-frequency
+            (0.00, '#00549F'),  # blue         — unloaded / cold
+            (0.38, '#E8F1F8'),  # RWTH blue 10%— bridge to prevent green cast in RGB space
+            (0.60, '#FFED00'),  # yellow        — moderate load / caution
+            (0.88, '#CC071E'),  # red           — at limit
+            (1.00, '#A11035'),  # bordeaux      — overloaded
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
         self.cmap.set_bad('#CCCCCC')

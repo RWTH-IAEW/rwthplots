@@ -28,10 +28,10 @@ plt.close(fig)
 print("1. colour palette saved")
 
 # ---------------------------------------------------------------------------
-# 2. New colormaps (heat, thermal, divergent_bm, divergent_gy, viridis)
+# 2. New colormaps (thermal, divergent_bm, divergent_gy, viridis)
 # ---------------------------------------------------------------------------
 cmaps_to_show = [
-    "heat_RWTH", "thermal_RWTH",
+    "thermal_RWTH",
     "divergent_RWTH", "divergent_bm_RWTH", "divergent_gy_RWTH",
     "viridis_RWTH",
 ]

@@ -74,12 +74,12 @@ Name expansion rules:
 
 ## Colormaps
 
-All 41 colormaps are registered with Matplotlib on import and are immediately
-available via the standard Matplotlib interface:
+All 38 colormaps are registered with Matplotlib on import — including `_r`
+reversed variants for every map (e.g. `loading_RWTH_r`):
 
 ```python
 plt.set_cmap("divergent_RWTH")          # blue → green → red diverging
-plt.set_cmap("loading_RWTH")            # blue → green → yellow → red
+plt.set_cmap("loading_RWTH")            # blue → white → yellow → red
 
 # Factory — returns a LinearSegmentedColormap object
 from rwthplots.cmap import rwth_cmap
@@ -93,7 +93,7 @@ ax.imshow(data, cmap=rwth_cmap("voltage_RWTH"))
 Print all registered names:
 
 ```python
-print(rwth_cmap())   # returns tuple of all 41 names
+print(rwth_cmap())   # returns tuple of all 38 names
 ```
 
 See [Colormaps](colormaps.md) for guidance on choosing the right map.

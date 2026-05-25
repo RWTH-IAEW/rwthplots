@@ -1,6 +1,8 @@
 # Colormaps
 
-41 colormaps are registered with Matplotlib automatically on `import rwthplots`.
+38 colormaps are registered with Matplotlib automatically on `import rwthplots`.
+Every map is also available in a reversed variant by appending `_r`
+(e.g. `loading_RWTH_r`), following the standard Matplotlib convention.
 All are accessible via `plt.set_cmap()`, `plt.get_cmap()`, or the
 [`rwth_cmap()`][rwthplots.cmap.rwth_cmap] factory.
 
@@ -15,17 +17,15 @@ All are accessible via `plt.set_cmap()`, `plt.get_cmap()`, or the
 | Qualitative / categorical | `extended_RWTH_discrete` with `lut=N` |
 | Ordered / ranked categories | `continuous_RWTH_discrete` |
 | Symmetric diverging (e.g. anomalies) | `divergent_RWTH`, `divergent_bm_RWTH`, `divergent_gy_RWTH` |
-| Strictly positive sequential | `viridis_RWTH`, `heat_RWTH`, `thermal_RWTH` |
+| Strictly positive sequential | `viridis_RWTH`, `thermal_RWTH` |
 | Single-hue gradient | any `<colour>_RWTH` (e.g. `blue_RWTH`) |
 | Voltage deviation | `voltage_RWTH` |
 | Line / transformer loading | `loading_RWTH` |
-| Renewable energy share | `renewable_RWTH` |
-| Frequency deviation | `frequency_RWTH` |
 
 !!! note "Perceptual uniformity"
     `viridis_RWTH` is designed for perceptual uniformity — lightness increases
     monotonically from violet to yellow, making it suitable for print, screen,
-    and greyscale reproduction.  For non-uniform maps (e.g. `heat_RWTH`) the
+    and greyscale reproduction.  For non-uniform maps (e.g. `thermal_RWTH`) the
     lightness path is non-monotonic, which can mislead magnitude judgements.
 
 ---
@@ -97,7 +97,6 @@ ax.contourf(lon, lat, anomaly, cmap="divergent_RWTH", norm=norm)
 | `divergent_bm_RWTH` | Blue ↔ Magenta | White |
 | `divergent_gy_RWTH` | Green ↔ Yellow | White |
 | `voltage_RWTH` | Red ↔ Red | Green |
-| `frequency_RWTH` | Blue ↔ Red | Green |
 
 ---
 
@@ -109,10 +108,8 @@ They work best for data with a natural zero or minimum.
 | Name | Stops | Notes |
 |---|---|---|
 | `viridis_RWTH` | Violet → Turquoise → May green → Yellow | Perceptually uniform |
-| `heat_RWTH` | Blue → Orange → White | High values appear bright |
-| `thermal_RWTH` | Petrol → Turquoise → Green → Yellow | Cold-to-hot |
-| `loading_RWTH` | Blue → Green → Yellow → Orange → Red → Bordeaux | 0 % to overloaded |
-| `renewable_RWTH` | Black → Orange → Yellow → May green → Green | 0 % to 100 % renewable |
+| `thermal_RWTH` | Black → Bordeaux → Red → Orange → Yellow → White | Blackbody / incandescence style |
+| `loading_RWTH` | Blue → White → Yellow → Red → Bordeaux | 0 % to overloaded |
 | `blue_RWTH` | Blue 100 % → Blue 10 % | Single-hue tint gradient |
 | *(+ 12 single-colour gradients)* | One per remaining RWTH base colour | |
 
@@ -120,7 +117,7 @@ They work best for data with a natural zero or minimum.
 
 ## Power-system colormaps
 
-Four colormaps are designed specifically for power-system analysis and grid
+Two colormaps are designed specifically for power-system analysis and grid
 visualisation.  They follow the RWTH colour semantics that engineers at IAEW
 are familiar with from simulation tools.
 
@@ -147,31 +144,9 @@ are familiar with from simulation tools.
     ax.axhline(100, color="#CC071E", linewidth=1, linestyle="--")
     ```
 
-    `loading_RWTH` — **blue → green → yellow → orange → red → bordeaux**.
+    `loading_RWTH` — **blue → white → yellow → red → bordeaux**.
     Blue for unloaded lines, bordeaux for overloaded.  Map values to [0, 1]
     where 1.0 = 100 % loading; clip above 1.0 to bordeaux.
-
-=== "Renewable fraction"
-
-    ```python
-    ax.imshow(renewable_share, cmap=rwth_cmap("renewable_RWTH"),
-              vmin=0, vmax=1)
-    ```
-
-    `renewable_RWTH` — **black → orange → yellow → may green → green**.
-    Encodes renewable energy share from 0 % (black) to 100 % (green).
-
-=== "Frequency deviation"
-
-    ```python
-    norm = mcolors.Normalize(vmin=-0.5, vmax=0.5)
-    for i in range(len(t) - 1):
-        ax.fill_between(t[i:i+2], freq[i:i+2],
-                        color=cmap_freq(norm(freq[i])), linewidth=0)
-    ```
-
-    `frequency_RWTH` — **blue → green (nominal) → red**.
-    Blue for under-frequency, red for over-frequency, green at 50 Hz.
 
 ---
 

@@ -5,6 +5,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [3.2.0] — 2026-05-25
+
+### Added
+- `_r` reversed variants registered for all 38 colormaps at import time
+  (e.g. `loading_RWTH_r`, `thermal_RWTH_r`), matching standard Matplotlib
+  convention.
+
+### Changed
+- `loading_RWTH` redesigned: **blue → white → yellow → red → bordeaux**.
+  Removed green and orange stops; a pale-blue bridge prevents the RGB
+  green cast that arises from linear blue→yellow interpolation.
+- `thermal_RWTH` redesigned as a blackbody/incandescence map:
+  **black → bordeaux → red → orange → yellow → white**.
+- `climate_stripes.py` now downloads real DWD data for Nordrhein-Westfalen
+  (area average, 1881–2025, 145 years) and computes anomalies relative to
+  the 1961–1990 baseline.
+- Gallery images regenerated; `docs/images/colormaps.png` updated.
+
+### Removed
+- `heat_RWTH` colormap (blue → orange → white sequential).
+- `renewable_RWTH` colormap (black → orange → yellow → green).
+- `frequency_RWTH` colormap (blue → green → red diverging).
+- `styles_discovery.py` (dead module; style loading is handled in `__init__.py`).
+
+---
+
 ## [3.1.1] — 2026-05-24
 
 ### Added

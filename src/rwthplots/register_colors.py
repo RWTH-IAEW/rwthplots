@@ -30,6 +30,8 @@ def register_rwth_colormaps():
             rwth_cmaps.funcdict[cmap_name]()
             # Register the generated colormap with Matplotlib
             mpl.colormaps.register(name=cmap_name, cmap=rwth_cmaps.cmap, force=True)
+            # Register the reversed variant (e.g. loading_RWTH_r)
+            mpl.colormaps.register(name=f"{cmap_name}_r", cmap=rwth_cmaps.cmap.reversed(), force=True)
             logging.info(f"Registered RWTH colormap: {cmap_name}")
 
 def plot_cmap():
