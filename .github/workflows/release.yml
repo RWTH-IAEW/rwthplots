@@ -21,13 +21,13 @@ jobs:
         python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v9
 
       - name: Install dependencies
         run: uv sync --group dev
@@ -45,13 +45,13 @@ jobs:
       id-token: write    # required for PyPI Trusted Publisher (OIDC — no token needed)
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
 
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v9
 
       - name: Build distributions
         run: uv build
