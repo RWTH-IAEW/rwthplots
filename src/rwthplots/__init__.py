@@ -1,4 +1,5 @@
 import importlib.resources as _ir
+import matplotlib as _mpl
 import matplotlib.pyplot as _plt
 
 from .register_colors import register_rwth_colormaps
@@ -32,14 +33,21 @@ _STYLE_PACKAGES = [
     "rwthplots.styles.journals",
     "rwthplots.styles.size",
 ]
+# matplotlib.style.core was removed in matplotlib 3.11, so only stable public
+# API is used here (rc_params_from_file, style.library, style.available).
 for _pkg in _STYLE_PACKAGES:
     try:
-        _pkg_styles = _plt.style.core.read_style_directory(_ir.files(_pkg))
-        _plt.style.core.update_nested_dict(
-            _plt.style.library,
-            {f"{_pkg}.{name}": rc for name, rc in _pkg_styles.items()},
-        )
+        for _res in _ir.files(_pkg).iterdir():
+            if not _res.name.endswith(".mplstyle"):
+                continue
+            _style_name = f"{_pkg}.{_res.name.removesuffix('.mplstyle')}"
+            with _ir.as_file(_res) as _style_path:
+                _plt.style.library[_style_name] = _mpl.rc_params_from_file(
+                    _style_path, use_default_template=False
+                )
     except Exception as _exc:
         import warnings as _warnings
         _warnings.warn(f"rwthplots: could not load styles from {_pkg!r}: {_exc}", stacklevel=1)
-_plt.style.core.available[:] = sorted(_plt.style.library.keys())
+_plt.style.available[:] = sorted(
+    _name for _name in _plt.style.library if not _name.startswith("_")
+)

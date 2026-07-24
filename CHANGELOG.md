@@ -5,6 +5,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [Unreleased]
+
+### Fixed
+- Compatibility with matplotlib 3.11: style registration no longer uses the
+  `matplotlib.style.core` module (deprecated in 3.9, removed in 3.11).
+  Styles are now parsed with the stable `matplotlib.rc_params_from_file()`
+  API. Importing rwthplots under matplotlib 3.11 previously raised
+  `AttributeError`. Internal `_`-prefixed matplotlib styles are also no
+  longer exposed in `plt.style.available`.
+
+### Changed
+- All locked dependencies upgraded (matplotlib 3.11.1 on Python ≥ 3.11,
+  pytest 9, pillow 12, coverage 7.15, …).
+- GitHub Actions bumped to latest majors: `checkout@v7`, `setup-python@v7`,
+  `setup-uv@v9`, `upload-artifact@v7`.
+
+### Added
+- Renovate configuration (`.github/renovate.json5`) for automated weekly
+  dependency updates: grouped non-major Python PRs, weekly `uv.lock`
+  refresh, automerged GitHub Actions minor/patch bumps.
+
+---
+
 ## [3.2.1] — 2026-05-25
 
 ### Changed

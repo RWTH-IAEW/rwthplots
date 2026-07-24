@@ -5,8 +5,8 @@ via `plt.style.use()` or the [`context()`][rwthplots.utils.context] manager.
 
 ## How style discovery works
 
-On import, rwthplots walks its `styles/` directory tree and calls
-`plt.style.core.read_style_directory()` on each subfolder, then merges the
+On import, rwthplots walks its `styles/` directory tree, parses every
+`.mplstyle` file with `matplotlib.rc_params_from_file()`, and merges the
 results into `plt.style.library`.  This means:
 
 - **New `.mplstyle` files** placed anywhere under `src/rwthplots/styles/` are
