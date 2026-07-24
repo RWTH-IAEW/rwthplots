@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../images/iaew_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -992,8 +992,8 @@
 <p>All styles are registered automatically on <code>import rwthplots</code> and can be used
 via <code>plt.style.use()</code> or the <a class="autorefs autorefs-internal" title="            rwthplots.utils.context" href="../api/utils/#rwthplots.utils.context"><code>context()</code></a> manager.</p>
 <h2 id="how-style-discovery-works">How style discovery works<a class="headerlink" href="#how-style-discovery-works" title="Permanent link">&para;</a></h2>
-<p>On import, rwthplots walks its <code>styles/</code> directory tree and calls
-<code>plt.style.core.read_style_directory()</code> on each subfolder, then merges the
+<p>On import, rwthplots walks its <code>styles/</code> directory tree, parses every
+<code>.mplstyle</code> file with <code>matplotlib.rc_params_from_file()</code>, and merges the
 results into <code>plt.style.library</code>.  This means:</p>
 <ul>
 <li><strong>New <code>.mplstyle</code> files</strong> placed anywhere under <code>src/rwthplots/styles/</code> are
@@ -1480,7 +1480,7 @@ of the style modifier.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
