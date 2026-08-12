@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/changelog/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/colormaps/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/examples/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/installation/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/quickstart/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/styles/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/api/cmap/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/api/formatter/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
     <url>
          <loc>https://rwth-iaew.github.io/rwthplots/api/utils/</loc>
-         <lastmod>2026-07-24</lastmod>
+         <lastmod>2026-08-12</lastmod>
     </url>
 </urlset>
