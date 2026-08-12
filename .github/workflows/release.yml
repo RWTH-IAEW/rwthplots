@@ -58,3 +58,30 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: publish       # only after the package is live on PyPI
+
+    permissions:
+      contents: write    # required to create a release
+
+    steps:
+      # No checkout needed — release notes are generated server-side by the API
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists — nothing to do."
+            exit 0
+          fi
+          # Tags carrying a suffix (v3.3.0-rc1) are prereleases, not "Latest"
+          case "$TAG" in
+            *-*) FLAGS=--prerelease ;;
+            *)   FLAGS=--latest ;;
+          esac
+          gh release create "$TAG" --title "$TAG" --generate-notes $FLAGS
