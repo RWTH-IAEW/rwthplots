@@ -10,6 +10,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Removed
 - Renovate configuration (`.github/renovate.json5`) — the Renovate app is no
   longer installed on the repository.
+- Support for Python 3.10 (`requires-python` is now `>=3.11`).
+
+### Added
+- Python 3.14 and 3.15 to the CI and release test matrices and PyPI classifiers.
+
+### Fixed
+- Matplotlib 3.11 deprecation warnings: colormaps now use
+  `cmap.with_extremes(bad=...)` instead of `cmap.set_bad(...)`, and the
+  `rwth-custom` style no longer sets the deprecated `text.hinting_factor` and
+  `text.kerning_factor` rcParams (both removed in matplotlib 3.13).
+
+### Changed
+- All locked dependencies upgraded (matplotlib 3.11.2, numpy 2.5.3,
+  pymdown-extensions 12, …).
+- `dev` dependency group split into `test` and `docs` groups (`dev` includes
+  both). CI test jobs install only `test`, so they no longer need mkdocs and
+  its pyyaml dependency, which has no Python 3.15 wheel yet.
 
 ---
 

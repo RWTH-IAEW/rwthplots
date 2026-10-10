@@ -7,15 +7,17 @@ authors = [
   { name = "Steffen Kortmann", email = "s.kortmann@iaew.rwth-aachen.de" },
   { name = "Florian Schmidtke", email = "f.schmidtke@iaew.rwth-aachen.de" },
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = "MIT"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Topic :: Scientific/Engineering :: Visualization",
 ]
 dependencies = [
@@ -33,14 +35,20 @@ Changelog = "https://github.com/RWTH-IAEW/rwthplots/blob/main/CHANGELOG.md"
 examples = ["rwth-cd-colors>=0.1.1"]
 
 [dependency-groups]
-dev = [
+test = [
   "coverage>=7.8.2",
+  "pytest>=8.4.0",
+  "pytest-cov>=6.1.1",
+]
+docs = [
   "mkdocs>=1.6.1",
   "mkdocs-material>=9.7.6",
   "mkdocstrings>=1.0.4",
   "mkdocstrings-python>=2.0.3",
-  "pytest>=8.4.0",
-  "pytest-cov>=6.1.1",
+]
+dev = [
+  { include-group = "test" },
+  { include-group = "docs" },
 ]
 
 [build-system]

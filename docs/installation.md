@@ -1,6 +1,6 @@
 # Installation
 
-Requires **Python ≥ 3.10** and **Matplotlib ≥ 3.7**.
+Requires **Python ≥ 3.11** and **Matplotlib ≥ 3.7**.
 
 ## From PyPI (recommended)
 
