@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [Unreleased]
+
+### Removed
+- GitLab CI configuration (`.gitlab-ci.yml`) — the internal GitLab repository
+  maintains its own pipeline; this repository is built by GitHub Actions only.
+
+---
+
 ## [3.3.0] — 2026-10-10
 
 ### Removed
