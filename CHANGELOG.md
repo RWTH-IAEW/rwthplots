@@ -13,7 +13,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Support for Python 3.10 (`requires-python` is now `>=3.11`).
 
 ### Added
-- Python 3.14 and 3.15 to the CI and release test matrices and PyPI classifiers.
+- Python 3.14 to the CI and release test matrices and PyPI classifiers
+  (3.13 classifier was also missing). Python 3.15 is deferred until
+  `actions/setup-python` provides it.
 
 ### Fixed
 - Matplotlib 3.11 deprecation warnings: colormaps now use
@@ -26,7 +28,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   pymdown-extensions 12, …).
 - `dev` dependency group split into `test` and `docs` groups (`dev` includes
   both). CI test jobs install only `test`, so they no longer need mkdocs and
-  its pyyaml dependency, which has no Python 3.15 wheel yet.
+  its pyyaml dependency (no Python 3.15 wheel yet).
 
 ---
 
