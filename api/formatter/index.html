@@ -1020,7 +1020,7 @@ Returns</p>
 <span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
 <span class="normal"><a href="#__codelineno-0-100">100</a></span>
 <span class="normal"><a href="#__codelineno-0-101">101</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="k">def</span><span class="w"> </span><span class="nf">set_size</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set figure dimensions to avoid scaling in LaTeX.</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">    </span><span class="sd">"""Set figure dimensions to avoid scaling in LaTeX.</span>
 <a id="__codelineno-0-61" name="__codelineno-0-61"></a>
 <a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    Parameters</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">    ----------</span>
@@ -1035,13 +1035,13 @@ Returns</p>
 <a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    -------</span>
 <a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">    fig_dim: tuple</span>
 <a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">            Dimensions of figure in inches</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">    """</span>
 <a id="__codelineno-0-76" name="__codelineno-0-76"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="k">if</span> <span class="n">width</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_PRESETS</span><span class="p">:</span>  <span class="c1"># type: ignore[operator]</span>
 <a id="__codelineno-0-78" name="__codelineno-0-78"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>                <span class="sa">f</span><span class="s2">&quot;Unknown predefined width </span><span class="si">{</span><span class="n">width</span><span class="si">!r}</span><span class="s2">. &quot;</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>                <span class="sa">f</span><span class="s2">&quot;Known values: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">_PRESETS</span><span class="p">)</span><span class="si">}</span><span class="s2">. &quot;</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a>                <span class="s2">&quot;Pass a numeric point value for a custom width.&quot;</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>                <span class="sa">f</span><span class="s2">"Unknown predefined width </span><span class="si">{</span><span class="n">width</span><span class="si">!r}</span><span class="s2">. "</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>                <span class="sa">f</span><span class="s2">"Known values: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">_PRESETS</span><span class="p">)</span><span class="si">}</span><span class="s2">. "</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>                <span class="s2">"Pass a numeric point value for a custom width."</span>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a>            <span class="p">)</span>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a>        <span class="n">width_pt</span> <span class="o">=</span> <span class="n">_PRESETS</span><span class="p">[</span><span class="n">width</span><span class="p">]</span>
 <a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="k">else</span><span class="p">:</span>
@@ -1089,7 +1089,7 @@ Returns</p>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-104">104</a></span>
 <span class="normal"><a href="#__codelineno-0-105">105</a></span>
 <span class="normal"><a href="#__codelineno-0-106">106</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="k">def</span><span class="w"> </span><span class="nf">list_presets</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all named width presets and their values in typographic points.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="w">    </span><span class="sd">"""Return all named width presets and their values in typographic points."""</span>
 <a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_PRESETS</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>

@@ -1062,14 +1062,14 @@ supports vector graphics.</p>
 Later sheets override earlier ones, so order matters:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Apply globally</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;rwthplots.styles.rwth-latex&quot;</span><span class="p">,</span>       <span class="c1"># base: LaTeX rendering, serif</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">&quot;rwthplots.styles.color.orange&quot;</span><span class="p">,</span>     <span class="c1"># override colour cycle → orange tints</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s2">&quot;rwthplots.styles.misc.grid&quot;</span><span class="p">,</span>        <span class="c1"># add light grid lines</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s2">&quot;rwthplots.styles.size.nature-column&quot;</span><span class="p">,</span>  <span class="c1"># set figure size for Nature</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">"rwthplots.styles.rwth-latex"</span><span class="p">,</span>       <span class="c1"># base: LaTeX rendering, serif</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">"rwthplots.styles.color.orange"</span><span class="p">,</span>     <span class="c1"># override colour cycle → orange tints</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s2">"rwthplots.styles.misc.grid"</span><span class="p">,</span>        <span class="c1"># add light grid lines</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s2">"rwthplots.styles.size.nature-column"</span><span class="p">,</span>  <span class="c1"># set figure size for Nature</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">])</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Or scoped to a block</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">with</span> <span class="n">rwthplots</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;rwth-word&quot;</span><span class="p">,</span> <span class="s2">&quot;color.orange&quot;</span><span class="p">,</span> <span class="s2">&quot;misc.grid&quot;</span><span class="p">,</span> <span class="s2">&quot;size.nature-column&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">with</span> <span class="n">rwthplots</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">"rwth-word"</span><span class="p">,</span> <span class="s2">"color.orange"</span><span class="p">,</span> <span class="s2">"misc.grid"</span><span class="p">,</span> <span class="s2">"size.nature-column"</span><span class="p">):</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div>
@@ -1240,8 +1240,8 @@ when converted to greyscale and under all three common CVD types.</p>
 <p>Journal modifiers set figure size, font family, font size, and DPI to match
 the submission requirements of specific publishers.  Stack them on top of
 <code>rwth-latex</code> or <code>rwth-word</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">&quot;rwthplots.styles.rwth-latex&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>               <span class="s2">&quot;rwthplots.styles.journals.nature&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">"rwthplots.styles.rwth-latex"</span><span class="p">,</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>               <span class="s2">"rwthplots.styles.journals.nature"</span><span class="p">])</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1310,12 +1310,12 @@ change.</p>
 They are the style-sheet equivalent of calling <code>set_size("name")</code> and can be
 combined with any base style or journal modifier.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Style-based sizing</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">&quot;rwthplots.styles.rwth-latex&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>               <span class="s2">&quot;rwthplots.styles.size.ieee-column&quot;</span><span class="p">])</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">"rwthplots.styles.rwth-latex"</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>               <span class="s2">"rwthplots.styles.size.ieee-column"</span><span class="p">])</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Programmatic sizing (equivalent)</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rwthplots.formatter</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_size</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">set_size</span><span class="p">(</span><span class="s2">&quot;ieee-column&quot;</span><span class="p">))</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">set_size</span><span class="p">(</span><span class="s2">"ieee-column"</span><span class="p">))</span>
 </code></pre></div>
 <table>
 <thead>
