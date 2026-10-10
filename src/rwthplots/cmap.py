@@ -121,7 +121,7 @@ class RWTHcmaps(object):
                 '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E',
                 '#A11035', '#612158', '#7A6FAC']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def standard_RWTH(self):
         """
@@ -131,7 +131,7 @@ class RWTHcmaps(object):
                 '#0098A1', '#57AB27', '#BDCD00', '#F6A800', '#CC071E',
                 '#A11035', '#612158', '#7A6FAC']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def blue_RWTH_discrete(self):
         """
@@ -139,7 +139,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#00549F', '#407FB7', '#8EBAE5', '#C7DDF2', '#E8F1FA']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def blue_RWTH(self):
         """
@@ -147,7 +147,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#00549F', '#407FB7', '#8EBAE5', '#C7DDF2', '#E8F1FA']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def black_RWTH_discrete(self):
         """
@@ -155,7 +155,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#000000', '#646567', '#9C9E9F', '#CFD1D2', '#ECEDED']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def black_RWTH(self):
         """
@@ -163,7 +163,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#000000', '#646567', '#9C9E9F', '#CFD1D2', '#ECEDED']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def magenta_RWTH_discrete(self):
         """
@@ -171,7 +171,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#E30066', '#E96088', '#F19EB1', '#F9D2DA', '#FDEEF0']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def magenta_RWTH(self):
         """
@@ -179,7 +179,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#E30066', '#E96088', '#F19EB1', '#F9D2DA', '#FDEEF0']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def yellow_RWTH_discrete(self):
         """
@@ -187,7 +187,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#FFED00', '#FFF055', '#FFF59B', '#FFFAD1', '#FFFDEE']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def yellow_RWTH(self):
         """
@@ -195,7 +195,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#FFED00', '#FFF055', '#FFF59B', '#FFFAD1', '#FFFDEE']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def petrol_RWTH_discrete(self):
         """
@@ -203,7 +203,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#006165', '#2D7F83', '#7DA4A7', '#BFD0D1', '#E6ECEC']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def petrol_RWTH(self):
         """
@@ -211,7 +211,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#006165', '#2D7F83', '#7DA4A7', '#BFD0D1', '#E6ECEC']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def turquoise_RWTH_discrete(self):
         """
@@ -219,7 +219,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#0098A1', '#00B1B7', '#89CCCF', '#CAE7E7', '#EBF6F6']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def turquoise_RWTH(self):
         """
@@ -227,7 +227,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#0098A1', '#00B1B7', '#89CCCF', '#CAE7E7', '#EBF6F6']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def green_RWTH_discrete(self):
         """
@@ -235,7 +235,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#57AB27', '#8DC060', '#B8D698', '#DDEBCE', '#F2F7EC']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def green_RWTH(self):
         """
@@ -243,7 +243,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#57AB27', '#8DC060', '#B8D698', '#DDEBCE', '#F2F7EC']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def maygreen_RWTH_discrete(self):
         """
@@ -251,7 +251,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#BDCD00', '#D0D95C', '#E0E69A', '#F0F3D0', '#F9FAED']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def maygreen_RWTH(self):
         """
@@ -259,7 +259,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#BDCD00', '#D0D95C', '#E0E69A', '#F0F3D0', '#F9FAED']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def orange_RWTH_discrete(self):
         """
@@ -267,7 +267,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#F6A800', '#FABE50', '#FDD48F', '#FEEAC9', '#FFF7EA']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def orange_RWTH(self):
         """
@@ -275,7 +275,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#F6A800', '#FABE50', '#FDD48F', '#FEEAC9', '#FFF7EA']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def red_RWTH_discrete(self):
         """
@@ -283,7 +283,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#CC071E', '#D85C41', '#E69679', '#F3CDBB', '#FAEBE3']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def red_RWTH(self):
         """
@@ -291,7 +291,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#CC071E', '#D85C41', '#E69679', '#F3CDBB', '#FAEBE3']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def bordeaux_RWTH_discrete(self):
         """
@@ -299,7 +299,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#A11035', '#B65256', '#CD8B87', '#E5C5C0', '#F5E8E5']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def bordeaux_RWTH(self):
         """
@@ -307,7 +307,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#A11035', '#B65256', '#CD8B87', '#E5C5C0', '#F5E8E5']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def violet_RWTH_discrete(self):
         """
@@ -315,7 +315,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#612158', '#834E75', '#A8859E', '#D2C0CD', '#EDE5EA']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def violet_RWTH(self):
         """
@@ -323,7 +323,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#612158', '#834E75', '#A8859E', '#D2C0CD', '#EDE5EA']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def purple_RWTH_discrete(self):
         """
@@ -331,7 +331,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#7A6FAC', '#9B91C1', '#BCB5D7', '#DEDAEB', '#F2F0F7']
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def purple_RWTH(self):
         """
@@ -339,7 +339,7 @@ class RWTHcmaps(object):
         """
         clrs = ['#7A6FAC', '#9B91C1', '#BCB5D7', '#DEDAEB', '#F2F0F7']
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def continuous_RWTH_discrete(self, lut=None):
         """
@@ -372,9 +372,9 @@ class RWTHcmaps(object):
             lut = 23
         self.cmap = discretemap(self.cname, [clrs[i] for i in indexes[lut - 1]])
         if lut == 23:
-            self.cmap.set_bad('#777777')
+            self.cmap = self.cmap.with_extremes(bad='#777777')
         else:
-            self.cmap.set_bad('#FFFFFF')
+            self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def rolling_RWTH_discrete(self, lut=None):
         """
@@ -397,7 +397,7 @@ class RWTHcmaps(object):
                 '#F5E8E5', '#EDE5EA', '#F2F0F7'
                 ]
         self.cmap = discretemap(self.cname, clrs)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def extended_RWTH_discrete(self, lut=None):
         """
@@ -430,9 +430,9 @@ class RWTHcmaps(object):
             lut = 23
         self.cmap = discretemap(self.cname, [clrs[i] for i in indexes[lut - 1]])
         if lut == 23:
-            self.cmap.set_bad('#777777')
+            self.cmap = self.cmap.with_extremes(bad='#777777')
         else:
-            self.cmap.set_bad('#FFFFFF')
+            self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def divergent_RWTH(self):
         """
@@ -446,7 +446,7 @@ class RWTHcmaps(object):
         ]
 
         self.cmap = LinearSegmentedColormap.from_list(self.cname, divergent_rwth_colors)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def viridis_RWTH(self):
         """
@@ -463,7 +463,7 @@ class RWTHcmaps(object):
             (1.00, '#FFED00'),  # yellow 100 %
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#FFFFFF')
+        self.cmap = self.cmap.with_extremes(bad='#FFFFFF')
 
     def thermal_RWTH(self):
         """
@@ -482,7 +482,7 @@ class RWTHcmaps(object):
             (1.00, '#FFFFFF'),  # white     — hot / maximum
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
+        self.cmap = self.cmap.with_extremes(bad='#CCCCCC')
 
     def divergent_bm_RWTH(self):
         """
@@ -497,7 +497,7 @@ class RWTHcmaps(object):
             (1.00, '#E30066'),  # magenta 100 %
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
+        self.cmap = self.cmap.with_extremes(bad='#CCCCCC')
 
     def divergent_gy_RWTH(self):
         """
@@ -512,7 +512,7 @@ class RWTHcmaps(object):
             (1.00, '#FFED00'),  # yellow 100 %
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
+        self.cmap = self.cmap.with_extremes(bad='#CCCCCC')
 
     # ------------------------------------------------------------------
     # Power-system colormaps
@@ -535,7 +535,7 @@ class RWTHcmaps(object):
             (1.00, '#CC071E'),  # red       — extreme over-voltage
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
+        self.cmap = self.cmap.with_extremes(bad='#CCCCCC')
 
     def loading_RWTH(self):
         """
@@ -552,7 +552,7 @@ class RWTHcmaps(object):
             (1.00, '#A11035'),  # bordeaux      — overloaded
         ]
         self.cmap = LinearSegmentedColormap.from_list(self.cname, clrs, N=256)
-        self.cmap.set_bad('#CCCCCC')
+        self.cmap = self.cmap.with_extremes(bad='#CCCCCC')
 
     def show(self):
         """
