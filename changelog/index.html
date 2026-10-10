@@ -866,7 +866,9 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 </ul>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Python 3.14 and 3.15 to the CI and release test matrices and PyPI classifiers.</li>
+<li>Python 3.14 to the CI and release test matrices and PyPI classifiers
+  (3.13 classifier was also missing). Python 3.15 is deferred until
+  <code>actions/setup-python</code> provides it.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
@@ -881,7 +883,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
   pymdown-extensions 12, …).</li>
 <li><code>dev</code> dependency group split into <code>test</code> and <code>docs</code> groups (<code>dev</code> includes
   both). CI test jobs install only <code>test</code>, so they no longer need mkdocs and
-  its pyyaml dependency, which has no Python 3.15 wheel yet.</li>
+  its pyyaml dependency (no Python 3.15 wheel yet).</li>
 </ul>
 <hr />
 <h2 id="322-2026-07-24">[3.2.2] — 2026-07-24<a class="headerlink" href="#322-2026-07-24" title="Permanent link">&para;</a></h2>
