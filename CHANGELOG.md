@@ -5,7 +5,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
-## [Unreleased]
+## [3.3.1] — 2026-10-13
 
 ### Removed
 - Unused `examples` extra (`rwth-cd-colors`, never imported) and the
