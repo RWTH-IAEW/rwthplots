@@ -860,8 +860,16 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 <h2 id="unreleased">[Unreleased]<a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
 <h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
 <ul>
+<li>Unused <code>examples</code> extra (<code>rwth-cd-colors</code>, never imported) and the
+  redundant <code>wheel</code> build requirement — setuptools provides it itself.</li>
 <li>GitLab CI configuration (<code>.gitlab-ci.yml</code>) — the internal GitLab repository
   maintains its own pipeline; this repository is built by GitHub Actions only.</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Exclude matplotlib 3.11.1, whose PDF backend draws some collections (e.g.
+  <code>hexbin</code> cells) at wrong positions; PNG output was unaffected, so the
+  error is easy to miss.</li>
 </ul>
 <hr />
 <h2 id="330-2026-10-10">[3.3.0] — 2026-10-10<a class="headerlink" href="#330-2026-10-10" title="Permanent link">&para;</a></h2>
@@ -877,7 +885,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
   (3.13 classifier was also missing). Python 3.15 is deferred until
   <code>actions/setup-python</code> provides it.</li>
 </ul>
-<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Matplotlib 3.11 deprecation warnings: colormaps now use
   <code>cmap.with_extremes(bad=...)</code> instead of <code>cmap.set_bad(...)</code>, and the
@@ -894,7 +902,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 </ul>
 <hr />
 <h2 id="322-2026-07-24">[3.2.2] — 2026-07-24<a class="headerlink" href="#322-2026-07-24" title="Permanent link">&para;</a></h2>
-<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Compatibility with matplotlib 3.11: style registration no longer uses the
   <code>matplotlib.style.core</code> module (deprecated in 3.9, removed in 3.11).
@@ -972,7 +980,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 <li>Climate stripes example uses RWTH blue / red with opacity only (no
   intermediate colours), matching the original Ed Hawkins design intent.</li>
 </ul>
-<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Cycler syntax in 22 <code>.mplstyle</code> files changed from single-quoted to
   double-quoted strings for Matplotlib 3.10 compatibility.</li>
@@ -1031,7 +1039,7 @@ Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</
 <li><code>__all__</code> added to <code>__init__.py</code>, <code>cmap.py</code>, <code>formatter.py</code>, <code>utils.py</code>.</li>
 <li><code>rwthplots.styles.size</code> registered as a style package.</li>
 </ul>
-<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_4">Fixed<a class="headerlink" href="#fixed_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>SyntaxWarning: invalid escape sequence '\s'</code> in <code>formatter.py</code> docstring.</li>
 <li><code>turqoise_RWTH</code> typo corrected to <code>turquoise_RWTH</code> in colourmap namelist.</li>
