@@ -8,8 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Removed
+- Unused `examples` extra (`rwth-cd-colors`, never imported) and the
+  redundant `wheel` build requirement — setuptools provides it itself.
 - GitLab CI configuration (`.gitlab-ci.yml`) — the internal GitLab repository
   maintains its own pipeline; this repository is built by GitHub Actions only.
+
+### Fixed
+- Exclude matplotlib 3.11.1, whose PDF backend draws some collections (e.g.
+  `hexbin` cells) at wrong positions; PNG output was unaffected, so the
+  error is easy to miss.
 
 ---
 

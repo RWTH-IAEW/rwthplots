@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.11"
 resolution-markers = [
     "python_full_version >= '3.12'",
@@ -1521,15 +1521,6 @@ wheels = [
 ]
 
 [[package]]
-name = "rwth-cd-colors"
-version = "0.1.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/07/08/da992c4432c72c4cf9f43ba4426eb030923c952a7a19b9fb97e87994b976/rwth-CD-colors-0.1.1.tar.gz", hash = "sha256:ba83dfd74eb150c94698dcc5a4fbfdfba860c1063b8d19b39de556778b6884c8", size = 2582, upload-time = "2022-03-05T14:48:23.761Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/f3/f50f99d2e69e25b6df5f941c72c88024b6a229b6c9f1cc8d453feeef886a/rwth_CD_colors-0.1.1-py3-none-any.whl", hash = "sha256:3285e26804321843dbe94fcb8bf5a631efde0e85a2a08c12e6d54664f35394ed", size = 2769, upload-time = "2022-03-05T14:48:22.263Z" },
-]
-
-[[package]]
 name = "rwthplots"
 version = "3.3.0"
 source = { editable = "." }
@@ -1537,11 +1528,6 @@ dependencies = [
     { name = "matplotlib" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
-]
-
-[package.optional-dependencies]
-examples = [
-    { name = "rwth-cd-colors" },
 ]
 
 [package.dev-dependencies]
@@ -1568,11 +1554,9 @@ test = [
 
 [package.metadata]
 requires-dist = [
-    { name = "matplotlib", specifier = ">=3.7" },
+    { name = "matplotlib", specifier = ">=3.7,!=3.11.1" },
     { name = "numpy", specifier = ">=1.21" },
-    { name = "rwth-cd-colors", marker = "extra == 'examples'", specifier = ">=0.1.1" },
 ]
-provides-extras = ["examples"]
 
 [package.metadata.requires-dev]
 dev = [
