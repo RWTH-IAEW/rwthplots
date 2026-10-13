@@ -20,7 +20,8 @@ classifiers = [
   "Topic :: Scientific/Engineering :: Visualization",
 ]
 dependencies = [
-  "matplotlib>=3.7",
+  # 3.11.1 writes some collections (e.g. hexbin) to PDF at wrong positions
+  "matplotlib>=3.7,!=3.11.1",
   "numpy>=1.21",
 ]
 
@@ -29,9 +30,6 @@ Homepage = "https://github.com/RWTH-IAEW/rwthplots"
 Repository = "https://github.com/RWTH-IAEW/rwthplots"
 Issues = "https://github.com/RWTH-IAEW/rwthplots/issues"
 Changelog = "https://github.com/RWTH-IAEW/rwthplots/blob/main/CHANGELOG.md"
-
-[project.optional-dependencies]
-examples = ["rwth-cd-colors>=0.1.1"]
 
 [dependency-groups]
 test = [
@@ -51,7 +49,7 @@ dev = [
 ]
 
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
